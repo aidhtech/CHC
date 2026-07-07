@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="lang-zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>理大人工智能 × 數位人文獎 2026</title>
+<meta name="description" content="An internal competition for PolyU Faculty of Humanities undergraduates. Theme: AI & Classics. 香港理工大學人文學院校內比賽，主題：人工智能與經典。" />
+<link rel="icon" type="image/png" href="assets/polyu-favicon.png?v=2" sizes="64x64" />
+<link rel="shortcut icon" type="image/png" href="assets/polyu-favicon.png?v=2" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f5f0e3;
+    --paper-2:#ede6d2;
+    --ink:#1e1b13;
+    --ink-soft:#6f6752;
+    --seal:#9c2b2b;
+    --seal-deep:#7e2020;
+    --bronze:#8a6a2f;
+    --line:#d9cead;
+    --line-soft:#e5dcc4;
+    --dark:#16130d;
+    --dark-2:#1e1a12;
+    --dark-line:#35301f;
+    --dark-text:#e9e1cc;
+    --dark-soft:#a89c7e;
+    --maxw:1360px;
+    --gutter:clamp(1.25rem,4vw,3.5rem);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;font-size:calc(16px * var(--font-scale, 1))}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter Tight","Noto Sans TC",system-ui,sans-serif;
+    font-weight:400;font-size:clamp(.9375rem,1.02rem,1.0625rem);line-height:1.72;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{font-family:"Fraunces","Noto Serif TC",Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:-.015em;margin:0}
+  .lang-zh h1,.lang-zh h2,.lang-zh h3,.lang-zh h4{font-family:"Noto Serif TC","Fraunces",serif;font-weight:500;letter-spacing:.02em;line-height:1.24}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+
+  ::selection{background:var(--seal);color:var(--paper)}
+
+  /* ---------- LANGUAGE VISIBILITY ---------- */
+  .lang-en .zh-only{display:none !important}
+  .lang-zh .en-only{display:none !important}
+
+  /* ---------- SMALL SYSTEM ---------- */
+  .label{display:inline-flex;align-items:center;gap:.7rem;font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
+  .lang-zh .label{letter-spacing:.3em}
+  .label .ord{font-family:"Noto Serif TC",serif;font-weight:600;color:var(--seal);letter-spacing:.1em}
+  .label::before{content:"";width:2rem;height:1px;background:var(--seal);flex:0 0 auto}
+  .label.bare::before{display:none}
+  [data-nav-anchor]{scroll-margin-top:150px}
+  .on-dark .label{color:var(--dark-soft)}
+  .on-dark .label .ord{color:#c8a04b}
+  .on-dark .label::before{background:#c8a04b}
+
+  .font-size-0{--font-scale:.9}
+  .font-size-1{--font-scale:1}
+  .font-size-2{--font-scale:1.15}
+  .font-size-3{--font-scale:1.35}
+  .font-size-4{--font-scale:1.5}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.92rem;letter-spacing:.02em;padding:.9rem 1.8rem;border-radius:0;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .25s cubic-bezier(.2,.7,.2,1),background .25s,color .25s,border-color .25s;min-height:48px;white-space:nowrap}
+  .btn svg{width:15px;height:15px;flex:0 0 auto;transition:transform .25s}
+  .btn:hover svg{transform:translateX(3px)}
+  .btn-down:hover svg{transform:translateY(3px)}
+  .btn-seal{background:var(--seal);color:#f8f2e4;border-color:var(--seal)}
+  .btn-seal:hover{background:var(--seal-deep);border-color:var(--seal-deep)}
+  .btn-ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .btn-ink:hover{background:#000}
+  .btn-line{background:transparent;color:var(--ink);border-color:rgba(30,27,19,.35)}
+  .btn-line:hover{border-color:var(--ink)}
+  .btn-paper{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .btn-paper:hover{background:#fff}
+  .btn-ghost{background:rgba(22,19,13,.16);backdrop-filter:blur(6px);color:#f4eeda;border-color:rgba(244,238,218,.45)}
+  .btn-ghost:hover{border-color:#f4eeda;background:rgba(244,238,218,.12)}
+  :focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:4px}
+
+  /* ---------- HEADER ---------- */
+  header.site{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .35s,border-color .35s,color .35s;border-bottom:1px solid transparent;color:#f4eeda}
+  header.site .bar{
+    display:flex;
+    align-items:center;
+    gap:1.2rem;
+    height:72px;
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding-left:clamp(.9rem,2vw,1.6rem);
+    padding-right:clamp(.9rem,2vw,1.6rem);
+  }
+  header.site.solid{background:rgba(245,240,227,.92);backdrop-filter:blur(12px) saturate(1.3);border-bottom-color:var(--line-soft);color:var(--ink)}
+  .brand{display:flex;align-items:center;gap:.8rem;min-width:0;flex:0 0 auto;text-decoration:none}
+  .brand a{display:inline-flex;align-items:center;line-height:0}
+  .brand img{width:auto;object-fit:contain;transition:filter .35s}
+  .brand .polyu-logo{height:30px}
+  .brand .faculty-logo{height:30px}
+  .brand .chc-logo{height:34px}
+  .brand .divider{width:1px;height:24px;background:currentColor;opacity:.3}
+  header.site:not(.solid) .brand img{filter:brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,.35))}
+  nav.top{flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:.1rem;overflow:hidden}
+  nav.top a{text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.02em;opacity:.82;padding:.45rem .6rem;border-radius:0;white-space:nowrap;transition:opacity .2s,background .2s}
+  nav.top a:hover{opacity:1}
+  nav.top a.current{opacity:1;background:rgba(156,43,43,.12);color:var(--seal)}
+  header.site:not(.solid) nav.top a.current{background:rgba(244,238,218,.18);color:#fff}
+  .header-right{display:flex;align-items:center;gap:.65rem;flex:0 0 auto;margin-left:auto}
+
+  .settings{position:relative}
+  .settings-toggle,.menu-toggle{background:none;border:1px solid currentColor;border-radius:50%;width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center;color:inherit;opacity:.9}
+  .settings-toggle{display:inline-flex}
+  .settings-toggle svg,.menu-toggle svg{width:20px;height:20px}
+  .settings-panel{position:absolute;right:0;top:calc(100% + .7rem);width:min(260px,calc(100vw - 2rem));padding:1rem;background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 18px 42px rgba(22,19,13,.18);display:none}
+  .settings-panel.open{display:block}
+  .settings-group+.settings-group{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line-soft)}
+  .settings-label{display:block;font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.55rem}
+  .setting-options{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+  .font-stepper{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:.45rem}
+  .ls-btn,.fs-btn{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:600;font-size:.84rem;line-height:1;border:1px solid var(--line);background:transparent;color:inherit;padding:.65rem .7rem;border-radius:0;cursor:pointer;min-height:38px;opacity:.75;transition:background .2s,color .2s,opacity .2s,border-color .2s}
+  .ls-btn{font-family:"Noto Serif TC",serif}
+  .ls-btn[data-lang="en"]{font-family:"Inter Tight",sans-serif;font-size:.76rem;letter-spacing:.06em}
+  .fs-btn{font-size:1.15rem;padding:.55rem .6rem}
+  .font-value{text-align:center;border:1px solid var(--line);min-height:38px;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--ink);background:rgba(255,255,255,.35)}
+  .ls-btn.active{background:var(--seal);border-color:var(--seal);color:#f8f2e4;opacity:1}
+  .fs-btn:disabled{opacity:.32;cursor:not-allowed}
+  .ls-btn:not(.active):hover,.fs-btn:not(.active):hover{opacity:1;border-color:var(--ink)}
+
+  .float-actions{position:fixed;right:clamp(1rem,3vw,2.2rem);bottom:calc(clamp(1rem,3vw,2.2rem) + env(safe-area-inset-bottom));z-index:90;display:grid;gap:.7rem}
+  .nav-cta,.top-cta{width:calc(72px * var(--font-scale, 1));height:calc(72px * var(--font-scale, 1));min-height:calc(72px * var(--font-scale, 1));padding:.4rem;border-radius:50%;box-shadow:0 18px 42px rgba(40,12,12,.32);white-space:normal;text-align:center;line-height:1.15;font-size:.86rem}
+  .top-cta svg{width:24px;height:24px;transform:none}
+  .top-cta:hover svg{transform:translateY(-3px)}
+  .menu-toggle{display:none}
+
+  @media (max-width:1180px){
+    nav.top{display:none}
+    .menu-toggle{display:inline-flex}
+  }
+  .nav-compact nav.top{display:none}
+  .nav-compact .menu-toggle{display:inline-flex}
+  @media (max-width:700px){
+    header.site .bar{gap:.75rem}
+    .brand{flex:1 1 auto;overflow:hidden;gap:.55rem}
+    .float-actions{right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom))}
+    .nav-cta,.top-cta{width:calc(62px * var(--font-scale, 1));height:calc(62px * var(--font-scale, 1));min-height:calc(62px * var(--font-scale, 1));font-size:.76rem}
+    .brand .en-logo,.brand .divider{display:none}
+  }
+
+  /* mobile drawer */
+  .drawer{position:fixed;inset:0;z-index:100;background:rgba(22,19,13,.94);backdrop-filter:blur(12px) saturate(1.2);color:var(--dark-text);border:1px solid var(--dark-line);transform:translateY(-102%);transition:transform .45s cubic-bezier(.65,0,.2,1);display:flex;flex-direction:column;padding:1.4rem var(--gutter) 2rem;overflow:auto;box-shadow:0 18px 42px rgba(0,0,0,.34)}
+  .drawer.open{transform:translateY(0)}
+  .drawer-head{display:flex;justify-content:flex-end;align-items:center;margin-bottom:1rem}
+  .drawer-close-toggle{display:inline-flex}
+  .drawer nav{display:flex;flex-direction:column}
+  .drawer nav a{text-decoration:none;color:var(--dark-text);font-family:"Fraunces","Noto Serif TC",serif;font-size:clamp(1.5rem,4.5vh,2rem);padding:.55rem 0;border-bottom:1px solid var(--dark-line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem;transition:color .2s,padding-left .25s}
+  .lang-zh .drawer nav a{font-family:"Noto Serif TC",serif}
+  .drawer nav a:hover{color:#fff;padding-left:.4rem}
+  .drawer nav a.current{color:#c8a04b}
+  .drawer .menu-group{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#c8a04b;margin:1.2rem 0 .25rem}
+  .drawer nav a.sub{font-size:clamp(1.05rem,2.8vh,1.34rem);padding:.42rem 0 .42rem 1.1rem}
+  .drawer nav a.sub:hover{padding-left:1.45rem}
+  .drawer .btn{margin-top:1.6rem}
+  @media (min-width:900px){
+    .drawer{left:auto;width:min(360px,92vw);box-shadow:0 18px 42px rgba(0,0,0,.34);padding:1.2rem 1.6rem 1.8rem}
+    .drawer-head{display:none}
+    .drawer nav a{font-size:clamp(1.25rem,3vh,1.72rem);padding:.48rem 0}
+    .drawer nav a.sub{font-size:clamp(.98rem,2.4vh,1.18rem)}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;color:#f6f0dd;isolation:isolate}
+  .hero .bg{position:absolute;inset:0;z-index:-2;background:url("assets/hist-hero-mountains.jpg") center 30%/cover no-repeat var(--dark)}
+  .hero .shade{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(180deg,rgba(18,15,8,.42) 0%,rgba(18,15,8,.05) 34%,rgba(16,13,7,.18) 58%,rgba(14,11,6,.82) 100%)}
+  .hero-inner{padding-top:9rem;padding-bottom:clamp(2.2rem,5vh,4rem)}
+  .hero .kicker{font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;font-weight:500;color:#e8d9ae;margin-bottom:1.6rem;display:flex;align-items:center;gap:.9rem}
+  .hero .kicker::before{content:"";width:2.4rem;height:1px;background:#c8a04b}
+  .lang-zh .hero .kicker{letter-spacing:.3em;font-family:"Noto Serif TC",serif}
+  .hero h1{font-size:clamp(2.7rem,7.2vw,6.2rem);font-weight:300;letter-spacing:-.02em;max-width:16ch;color:#faf5e6;text-wrap:balance}
+  .lang-zh .hero h1{font-weight:500;letter-spacing:.02em;line-height:1.16;max-width:15ch}
+  .hero h1 .amp{font-style:italic;font-weight:300;color:#d8b263}
+  .hero .zh-title{font-family:"Fraunces","Noto Serif TC",serif;font-style:italic;font-weight:300;font-size:clamp(1.15rem,2.4vw,1.8rem);color:#e4d5ab;letter-spacing:.04em;margin-top:1.1rem}
+  .lang-zh .hero .zh-title{font-style:normal;font-family:"Noto Serif TC",serif;letter-spacing:.14em}
+  .hero p.lead{max-width:56ch;margin:1.8rem 0 0;font-size:clamp(1rem,1.3vw,1.14rem);color:#ded4b8;line-height:1.75;font-weight:400}
+  .hero p.lead strong{color:#fff;font-weight:500}
+  .hero .cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.4rem}
+  .hero .meta{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:clamp(1.4rem,4vw,4rem);margin-top:clamp(2.2rem,5vh,3.6rem);border-top:1px solid rgba(244,238,218,.28);padding-top:1.4rem}
+  @media (max-width:760px){.hero .meta{grid-template-columns:1fr 1fr;gap:1.2rem 2rem}}
+  .hero .meta .k{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:#c9b98e;font-weight:500}
+  .lang-zh .hero .meta .k{letter-spacing:.18em}
+  .hero .meta .v{font-family:"Fraunces","Noto Serif TC",serif;font-size:clamp(1.05rem,1.6vw,1.35rem);margin-top:.3rem;color:#faf5e6}
+  .lang-zh .hero .meta .v{font-family:"Noto Serif TC",serif}
+  .hero .credit{display:none}
+
+  .art-info{position:absolute;right:clamp(.8rem,2vw,1.2rem);bottom:clamp(.8rem,2vw,1.2rem);z-index:5;display:flex;flex-direction:row-reverse;align-items:center;justify-content:flex-start;width:36px;height:36px;max-width:min(72vw,22rem);padding:0;border:1px solid rgba(255,255,255,.86);border-radius:50%;background:transparent;color:#fff;text-decoration:none;overflow:hidden;transition:width .28s ease,background .28s ease,border-color .28s ease,border-radius .28s ease;cursor:help}
+  .art-info .i{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;line-height:1;color:#fff}
+  .art-info .txt{display:block;max-width:0;opacity:0;white-space:nowrap;overflow:hidden;font-size:.68rem;letter-spacing:.06em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.55);transition:max-width .28s ease,opacity .2s ease,padding .28s ease}
+  .art-info:hover,.art-info:focus,.art-info:focus-visible,.art-info.open{width:var(--info-width,min(72vw,22rem));height:auto;min-height:36px;border-radius:18px;background:rgba(0,0,0,.32);border-color:#fff}
+  .art-info:hover .txt,.art-info:focus .txt,.art-info:focus-visible .txt,.art-info.open .txt{max-width:calc(var(--info-width,min(72vw,22rem)) - 36px);opacity:1;padding:.45rem .45rem .45rem .7rem;white-space:normal;line-height:1.28}
+
+  /* ---------- SCROLL BAND (Qingming marquee) ---------- */
+  .scrollband{background:#efe7d2;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+  .scrollband .track{display:flex;width:max-content;animation:pan 90s linear infinite}
+  .scrollband img{height:clamp(90px,12vw,150px);width:auto;max-width:none}
+  @keyframes pan{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.scrollband .track{animation:none}}
+  .band-caption{display:none}
+
+  /* ---------- SECTION SYSTEM ---------- */
+  section.sec{scroll-margin-top:70px}
+  .folio{display:block;border-top:1px solid var(--ink);padding-top:1rem;margin-bottom:clamp(2rem,5vw,3.5rem)}
+  .on-dark .folio{border-top-color:var(--dark-line)}
+  .sec-pad{padding-top:clamp(3.5rem,8vw,7rem);padding-bottom:clamp(3.5rem,8vw,7rem)}
+  .display{font-size:clamp(2.1rem,4.8vw,4.2rem);font-weight:300;letter-spacing:-.02em;max-width:22ch;text-wrap:balance}
+  .lang-zh .display{font-weight:500;letter-spacing:.02em}
+  p.intro{color:var(--ink-soft);font-size:clamp(1rem,1.25vw,1.13rem);margin:1.4rem 0 0;max-width:62ch;line-height:1.75}
+  .on-dark p.intro{color:var(--dark-soft)}
+  .block-gap{margin-top:clamp(3rem,7vw,5.5rem)}
+
+  .twocol{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+  @media (max-width:880px){.twocol{grid-template-columns:1fr}}
+  .prose p{margin:0 0 1.15rem;max-width:60ch}
+  .prose p:last-child{margin-bottom:0}
+
+  figure.art{margin:0;position:relative}
+  figure.art img{width:100%;height:auto;border-radius:2px}
+  figure.art figcaption{display:none}
+  figure.art figcaption::before{display:none}
+  .on-dark figure.art figcaption{color:var(--dark-soft)}
+
+  .pull{border-top:2px solid var(--ink);padding-top:1.2rem}
+  .pull h4{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);margin-bottom:.8rem}
+  .no-song-zh{font-family:"Inter Tight","Noto Sans TC",sans-serif !important}
+  .accent-red{color:var(--seal) !important}
+  .lang-zh .pull h4{letter-spacing:.16em}
+  .pull p{font-family:"Fraunces","Noto Serif TC",serif;font-size:1.12rem;line-height:1.6;margin:0;color:var(--ink)}
+  .lang-zh .pull p{font-family:"Noto Serif TC",serif;font-size:1.05rem}
+  .pull p+p{margin-top:.8rem}
+  .pull .fine{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-size:.86rem;color:var(--ink-soft);line-height:1.65}
+  .sans-copy,
+  .sans-copy h4,
+  .sans-copy p,
+  .lang-zh .sans-copy p{font-family:"Inter Tight","Noto Sans TC",sans-serif !important;font-size:.9rem !important;line-height:1.65}
+  .no-green-copy .fine,
+  .no-green-copy.tl-what,
+  p.no-green-copy,
+  .no-green-copy p[style*="var(--ink-soft)"]{color:var(--ink) !important}
+
+  .list-clean{margin:.6rem 0 0;padding:0;list-style:none;display:grid;gap:0}
+  .list-clean li{padding:.85rem 0;border-bottom:1px solid var(--line-soft);display:flex;gap:.9rem;align-items:baseline}
+  .list-clean li::before{content:"•";color:var(--seal);flex:0 0 auto}
+
+  /* numbered editorial list (theme examples) */
+  .ex-list{list-style:none;padding:0;margin:0;counter-reset:none}
+  .ex-list li{padding:clamp(1.2rem,2.5vw,1.8rem) 0;border-top:1px solid var(--line);display:grid;grid-template-columns:5rem 1fr;gap:1.4rem;align-items:baseline}
+  .ex-list li:last-child{border-bottom:1px solid var(--line)}
+  @media (max-width:640px){.ex-list li{grid-template-columns:2.6rem 1fr;gap:1rem}}
+  .ex-list .num{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:1.5rem;color:var(--seal);line-height:1}
+  .ex-list .txt{font-size:clamp(.98rem,1.25vw,1.12rem);line-height:1.7;max-width:75ch}
+
+  /* format plates */
+  .plates{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+  @media (max-width:820px){.plates{grid-template-columns:1fr}}
+  .plate{border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:clamp(1.6rem,3.5vw,2.6rem);position:relative}
+  .plate .no{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:2.4rem;color:var(--line);line-height:1;transition:color .3s}
+  .plate:hover .no{color:var(--seal)}
+  .plate .tag{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);font-weight:500;margin-top:2.4rem}
+  .lang-zh .plate .tag{letter-spacing:.16em}
+  .plate h3{font-size:clamp(1.5rem,2.4vw,2rem);margin:.5rem 0 .8rem;font-weight:400;color:var(--seal)}
+  .plate p{margin:0 0 1.2rem;color:var(--ink-soft);font-size:.98rem;max-width:44ch}
+  .plate .kinds{font-size:.82rem;color:var(--bronze);border-top:1px solid var(--line);padding-top:.9rem;line-height:1.8;letter-spacing:.01em}
+
+  /* submit steps */
+  .steps{border-top:0}
+  .step{display:grid;grid-template-columns:minmax(5rem,8rem) minmax(180px,240px) 1fr;gap:clamp(1.2rem,3vw,2.5rem);padding:clamp(1.8rem,4vw,3rem) 0;border-bottom:1px solid var(--ink)}
+  @media (max-width:820px){.step{grid-template-columns:4rem 1fr;grid-template-rows:auto auto}.step>div:last-child{grid-column:2}}
+  .step .no{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(2.6rem,5vw,4rem);color:var(--line);line-height:.9;transition:color .3s}
+  .step:hover .no{color:var(--seal)}
+  .step .phase{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+  .lang-zh .step .phase{letter-spacing:.14em}
+  .step .when{font-family:"Fraunces","Noto Serif TC",serif;font-size:clamp(1.3rem,2vw,1.7rem);color:var(--seal);margin-top:.4rem;line-height:1.15}
+  .lang-zh .step .when{font-family:"Noto Serif TC",serif}
+  .step h3{font-size:clamp(1.25rem,1.9vw,1.6rem);font-weight:400;margin-bottom:1rem}
+  .step ul{margin:0;padding:0;list-style:none;display:grid;gap:.7rem}
+  .step ul li{font-size:.96rem;color:var(--ink);display:flex;gap:.8rem;align-items:baseline;max-width:75ch}
+  .step ul li::before{content:"—";color:var(--bronze);flex:0 0 auto}
+
+  .req-both{margin-top:clamp(2rem,5vw,3rem);background:var(--dark);color:var(--dark-text);padding:clamp(1.8rem,4vw,2.6rem);border-radius:2px}
+  .req-both h4{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:#c8a04b;margin-bottom:1.1rem}
+  .lang-zh .req-both h4{letter-spacing:.14em}
+  .req-both ul{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.6rem}
+  .req-both li{border:1px solid var(--dark-line);padding:.55rem 1.1rem;border-radius:0;font-size:.88rem;color:var(--dark-text)}
+
+  /* criteria */
+  .criteria{border-top:1px solid var(--line)}
+  .crit{display:grid;grid-template-columns:minmax(0,1fr) clamp(90px,12vw,150px);gap:clamp(1.2rem,3vw,2.5rem);padding:clamp(1.4rem,3vw,2rem) 0;border-bottom:1px solid var(--line);align-items:start}
+  .crit:last-child{border-bottom:1px solid var(--ink)}
+  @media (max-width:640px){.crit{grid-template-columns:1fr}}
+  .crit h3{font-size:clamp(1.15rem,1.7vw,1.45rem);font-weight:400;margin-bottom:.5rem}
+  .crit p{margin:0;color:var(--ink-soft);font-size:.94rem;max-width:66ch}
+  .crit .weight{text-align:right}
+  @media (max-width:640px){.crit .weight{text-align:left}}
+  .crit .pct{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(2rem,3.4vw,2.9rem);color:var(--seal);line-height:1}
+  .crit .bar{height:3px;background:var(--line-soft);margin-top:.7rem;overflow:hidden}
+  .crit .bar span{display:block;height:100%;background:var(--seal);transform:scaleX(0);transform-origin:left}
+  .criteria.in .crit .bar span{animation:barGrow .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .criteria.in .crit:nth-child(2) .bar span{animation-delay:.08s}
+  .criteria.in .crit:nth-child(3) .bar span{animation-delay:.16s}
+  .criteria.in .crit:nth-child(4) .bar span{animation-delay:.24s}
+  .criteria.in .crit:nth-child(5) .bar span{animation-delay:.32s}
+  .criteria.in .crit:nth-child(6) .bar span{animation-delay:.4s}
+  @keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(var(--w))}}
+  @media (prefers-reduced-motion:reduce){.criteria.in .crit .bar span{animation:none;transform:scaleX(var(--w))}}
+
+  /* stages */
+  .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+  @media (max-width:800px){.stages{grid-template-columns:1fr}}
+  .stage{border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:clamp(1.5rem,3vw,2.2rem)}
+  .stage .no{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:2.4rem;color:var(--line);line-height:1;transition:color .3s}
+  .stage:hover .no{color:var(--seal)}
+  .stage h3{font-size:1.2rem;font-weight:400;margin:.9rem 0 .5rem}
+  .stage p{margin:0;color:var(--ink-soft);font-size:.92rem}
+
+  .note{color:var(--ink-soft);font-size:.94rem;max-width:80ch}
+
+  /* ---------- DARK SECTIONS (awards) ---------- */
+  .on-dark{background:var(--dark);color:var(--dark-text)}
+  .imageband{position:relative;overflow:hidden}
+  .imageband img{width:100%;height:clamp(220px,38vh,420px);object-fit:cover;filter:saturate(.92)}
+  .imageband .cap{display:none}
+  .prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--dark-line);border-left:1px solid var(--dark-line)}
+  @media (max-width:880px){.prizes{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.prizes{grid-template-columns:1fr}}
+  .prize{border-right:1px solid var(--dark-line);border-bottom:1px solid var(--dark-line);padding:clamp(1.6rem,3vw,2.4rem);transition:background .25s,border-color .25s}
+  .prize .rank{font-family:"Noto Serif TC",serif;font-size:1.1rem;color:#c8a04b;font-weight:600}
+  .prize .rank small{display:block;font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dark-soft);margin-top:.35rem}
+  .prize .amt{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(2rem,3.2vw,2.8rem);margin-top:1.4rem;color:#f4edd8;letter-spacing:-.01em}
+  .prize.champion,
+  .prizes:not(:hover) .prize.champion,
+  .prize:hover{background:linear-gradient(160deg,rgba(200,160,75,.16),rgba(200,160,75,.02));border-color:rgba(200,160,75,.42)}
+  .prizes:hover .prize.champion:not(:hover){background:transparent;border-color:var(--dark-line)}
+  .prize.champion .amt{font-size:clamp(2.5rem,4vw,3.6rem)}
+  .prizes:not(:hover) .prize.champion .amt,
+  .prize:hover .amt{color:#ecc873}
+  .prizes:hover .prize.champion:not(:hover) .amt{color:#f4edd8}
+  .prize.wide{grid-column:span 2}
+  @media (max-width:560px){.prize.wide{grid-column:auto}}
+  .awards-note{margin-top:1.8rem;color:var(--dark-soft);font-size:.94rem;max-width:78ch}
+  .awards-note.small{font-size:.84rem;opacity:.8}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{border-left:1px solid var(--line);margin-left:.4rem}
+  .tl-item{position:relative;padding:0 0 clamp(1.6rem,3.5vw,2.4rem) clamp(1.6rem,4vw,3rem);display:grid;grid-template-columns:minmax(120px,200px) 1fr;gap:clamp(1rem,3vw,2.5rem);align-items:baseline}
+  @media (max-width:640px){.tl-item{grid-template-columns:1fr;gap:.3rem}}
+  .tl-item:last-child{padding-bottom:.4rem}
+  .tl-item::before{content:"";position:absolute;left:-5px;top:.5em;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink-soft)}
+  .tl-item.key::before{background:var(--seal);border-color:var(--seal)}
+  .tl-when{font-family:"Fraunces","Noto Serif TC",serif;font-size:clamp(1.15rem,1.8vw,1.5rem);color:var(--ink)}
+  .lang-zh .tl-when{font-family:"Noto Serif TC",serif}
+  .tl-item.key .tl-when{color:var(--seal)}
+  .tl-what{color:var(--ink-soft);font-size:.98rem;max-width:56ch}
+  .tl-item.key .tl-what{color:var(--ink)}
+
+  /* training */
+  .topic-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+  .topic-list li{display:grid;grid-template-columns:3rem 1fr;gap:1.1rem;padding:1.15rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .topic-list .t-no{font-family:"Fraunces",serif;font-style:italic;font-weight:300;color:var(--seal);font-size:1.05rem}
+
+  /* integrity */
+  .integ-points{list-style:none;padding:0;margin:0;display:grid;gap:0}
+  .integ-points li{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:baseline;padding:1.05rem 0;border-bottom:1px solid var(--line-soft);font-size:.97rem;max-width:72ch}
+  .integ-points .mk{color:var(--seal);flex:0 0 auto;font-family:"Fraunces",serif;font-style:italic}
+  .integ-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(2rem,4vw,3rem);border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+  @media (max-width:760px){.integ-grid{grid-template-columns:1fr}}
+  .ac,.un{padding:clamp(1.5rem,3vw,2.2rem);border-right:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .un{background:rgba(156,43,43,.06)}
+  .ac h4,.un h4{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.9rem}
+  .lang-zh .ac h4,.lang-zh .un h4{letter-spacing:.12em}
+  .ac h4{color:var(--bronze)}
+  .un h4{color:var(--seal)}
+  .ac p,.un p{margin:0;font-size:.95rem;color:var(--ink);max-width:52ch}
+
+  /* ---------- CONTACT / CTA ---------- */
+  .contact-band{position:relative;color:#f4eeda;isolation:isolate}
+  .contact-band .bg{position:absolute;inset:0;z-index:-2;background:url("assets/hist-diamond-sutra.jpg") center 38%/cover no-repeat var(--dark)}
+  .contact-band .shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,11,6,.78),rgba(14,11,6,.62) 45%,rgba(14,11,6,.85))}
+  .contact-band .inner{padding-top:clamp(4rem,10vw,8rem);padding-bottom:clamp(4rem,10vw,8rem)}
+  .contact-band h1{font-size:clamp(2.3rem,5.4vw,4.6rem);font-weight:300;color:#faf5e6;max-width:18ch;text-wrap:balance}
+  .lang-zh .contact-band h1{font-weight:500}
+  .contact-band p.intro{color:#d8cdae}
+  .contact-band .credit{display:none}
+  .contact-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+  @media (max-width:880px){.contact-cols{grid-template-columns:1fr}}
+  .contact-cols h2{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:400}
+  .contact-cols .cta-copy p{color:var(--ink-soft);margin:1rem 0 0;max-width:46ch}
+  .cta-actions{display:flex;flex-direction:column;align-items:flex-start;gap:.9rem;margin-top:1.8rem}
+  .cta-fine{font-size:.8rem;color:var(--ink-soft)}
+  .info-list{list-style:none;margin:.4rem 0 0;padding:0}
+  .info-list li{padding:.9rem 0;border-bottom:1px solid var(--line-soft);font-size:.96rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:baseline}
+  .info-block h4{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);margin-bottom:.4rem}
+  .lang-zh .info-block h4{letter-spacing:.14em}
+  .info-block+.info-block{margin-top:2rem}
+  .info-block .org{font-family:"Fraunces","Noto Serif TC",serif;font-size:1.1rem;line-height:1.6;margin:.6rem 0 0}
+  .lang-zh .info-block .org{font-family:"Noto Serif TC",serif;font-size:1.02rem}
+
+  /* explore cards (home) */
+  .explore{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+  @media (max-width:820px){.explore{grid-template-columns:1fr}}
+  .xcard{text-decoration:none;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:clamp(1.6rem,3vw,2.4rem);display:flex;flex-direction:column;transition:background .3s;position:relative}
+  .xcard:hover{background:#efe8d4}
+  .xcard .xk{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);font-weight:500}
+  .lang-zh .xcard .xk{letter-spacing:.16em}
+  .xcard h3{font-size:clamp(1.5rem,2.3vw,1.9rem);font-weight:400;margin:.8rem 0 .6rem}
+  .xcard p{margin:0;color:var(--ink-soft);font-size:.95rem;max-width:40ch}
+  .xcard .go{display:inline-flex;align-items:center;gap:.5rem;margin-top:auto;padding-top:1.6rem;color:var(--ink);font-weight:500;font-size:.88rem;transition:color .2s}
+  .xcard:hover .go{color:var(--seal)}
+
+  /* home CTA band */
+  .cta-band{background:var(--seal);color:#f8f2e4;border-radius:2px;overflow:hidden;margin-top:clamp(3rem,7vw,5.5rem)}
+  .cta-band .in{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;align-items:center;padding:clamp(2.2rem,5vw,3.6rem)}
+  @media (max-width:760px){.cta-band .in{grid-template-columns:1fr}}
+  .cta-band h2{color:#fdf8ec;font-size:clamp(1.8rem,3.8vw,2.9rem);font-weight:400}
+  .cta-band p{color:#eec9c0;margin:.9rem 0 0;max-width:46ch}
+  .cta-band .cta-actions{margin-top:0;align-items:stretch}
+  .cta-band .btn{justify-content:center}
+  .btn-outline{background:transparent;color:#fdf8ec;border-color:rgba(253,248,236,.5)}
+  .btn-outline:hover{border-color:#fdf8ec;background:rgba(253,248,236,.1)}
+
+  /* FOOTER */
+  footer.site{background:var(--dark);color:var(--dark-soft);padding:clamp(3rem,6vw,4.5rem) 0 2rem}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(2rem,4vw,3rem)}
+  @media (max-width:760px){.foot-top{grid-template-columns:1fr}}
+  footer.site h4{font-family:"Inter Tight","Noto Sans TC",sans-serif;font-weight:500;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:#c8a04b;margin-bottom:1.1rem}
+  .lang-zh footer.site h4{letter-spacing:.14em}
+  footer.site a{color:var(--dark-text);text-decoration:none}
+  footer.site a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  .foot-brand p{max-width:44ch;font-size:.92rem;line-height:1.75}
+  .foot-logos{display:flex;gap:1rem;align-items:center;margin-bottom:1.4rem;width:fit-content}
+  .foot-logos a{display:inline-flex;align-items:center;line-height:0}
+  .foot-logos img{width:auto;object-fit:contain}
+  .foot-logos img{filter:brightness(0) invert(1);opacity:.92}
+  .foot-logos .polyu-logo{height:26px}
+  .foot-logos .faculty-logo{height:26px}
+  .foot-logos .chc-logo{height:30px}
+  .foot-logos .divider{width:1px;height:22px;background:rgba(233,225,204,.45)}
+  .foot-links{list-style:none;padding:0;margin:0;display:grid;gap:.75rem;font-size:.92rem}
+  .social-links{display:flex;align-items:center;gap:.65rem;margin-top:1.2rem}
+  .social-links a{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--dark-line);color:var(--dark-text);transition:color .2s,border-color .2s,background .2s}
+  .social-links a:hover{background:rgba(233,225,204,.08);border-color:#c8a04b;color:#fff;text-decoration:none}
+  .social-links svg{width:18px;height:18px;fill:currentColor}
+  .foot-bottom{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--dark-line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.78rem}
+  .foot-bottom .seal-badge{display:inline-flex;align-items:center;gap:.5rem;color:#c8a04b}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site" id="siteHeader">
+  <div class="wrap bar">
+    <div class="brand" aria-label="Institution links">
+      <a href="https://www.polyu.edu.hk/tc/" data-href-en="https://www.polyu.edu.hk/" data-href-zh="https://www.polyu.edu.hk/tc/" target="_blank" rel="noopener noreferrer" aria-label="The Hong Kong Polytechnic University website">
+        <img class="polyu-logo" src="assets/polyu-logo-transparent.png" alt="The Hong Kong Polytechnic University" />
+      </a>
+      <span class="divider"></span>
+      <a href="https://www.polyu.edu.hk/fh/?sc_lang=tc" data-href-en="https://www.polyu.edu.hk/fh/" data-href-zh="https://www.polyu.edu.hk/fh/?sc_lang=tc" target="_blank" rel="noopener noreferrer" aria-label="Faculty of Humanities website">
+        <img class="faculty-logo" src="assets/faculty-humanities-logo-hd-transparent.png" alt="Faculty of Humanities, The Hong Kong Polytechnic University" />
+      </a>
+      <span class="divider en-logo"></span>
+      <a class="en-logo" href="https://www.polyu.edu.hk/chc/" data-href-en="https://www.polyu.edu.hk/chc/?sc_lang=en" data-href-zh="https://www.polyu.edu.hk/chc/" target="_blank" rel="noopener noreferrer" aria-label="Department of Chinese History and Culture website">
+        <img class="chc-logo" src="assets/chc-logo-hd-transparent.png" alt="Department of Chinese History and Culture" />
+      </a>
+    </div>
+    <nav class="top" aria-label="Primary" id="primaryNav"></nav>
+    <div class="header-right">
+      <div class="settings">
+        <button class="settings-toggle" id="settingsBtn" aria-label="Settings" aria-expanded="false" aria-controls="settingsPanel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.04.04a2.1 2.1 0 0 1-2.97 2.97l-.04-.04a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.08 1.65V21.3a2.1 2.1 0 0 1-4.2 0v-.06a1.8 1.8 0 0 0-1.08-1.65 1.8 1.8 0 0 0-1.98.36l-.04.04a2.1 2.1 0 1 1-2.97-2.97l.04-.04A1.8 1.8 0 0 0 3.86 15a1.8 1.8 0 0 0-1.65-1.08H2.1a2.1 2.1 0 0 1 0-4.2h.11a1.8 1.8 0 0 0 1.65-1.08 1.8 1.8 0 0 0-.36-1.98l-.04-.04a2.1 2.1 0 1 1 2.97-2.97l.04.04a1.8 1.8 0 0 0 1.98.36 1.8 1.8 0 0 0 1.08-1.65V2.1a2.1 2.1 0 0 1 4.2 0v.3a1.8 1.8 0 0 0 1.08 1.65 1.8 1.8 0 0 0 1.98-.36l.04-.04a2.1 2.1 0 1 1 2.97 2.97l-.04.04a1.8 1.8 0 0 0-.36 1.98 1.8 1.8 0 0 0 1.65 1.08h.25a2.1 2.1 0 0 1 0 4.2h-.25A1.8 1.8 0 0 0 19.4 15Z"/></svg>
+        </button>
+        <div class="settings-panel" id="settingsPanel">
+          <div class="settings-group">
+            <span class="settings-label"><span class="en-only">Language</span><span class="zh-only">語言</span></span>
+            <div class="setting-options" role="group" aria-label="Language / 語言">
+              <button class="ls-btn active" data-lang="zh" aria-pressed="true" lang="zh-Hant">繁</button>
+              <button class="ls-btn" data-lang="en" aria-pressed="false" lang="en">EN</button>
+            </div>
+          </div>
+          <div class="settings-group">
+            <span class="settings-label"><span class="en-only">Font size</span><span class="zh-only">字體大小</span></span>
+            <div class="font-stepper" role="group" aria-label="Font size">
+              <button class="fs-btn" id="fontDec" type="button" aria-label="Decrease font size">−</button>
+              <span class="font-value" id="fontValue" aria-live="polite">100%</span>
+              <button class="fs-btn" id="fontInc" type="button" aria-label="Increase font size">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false" id="menuBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="float-actions">
+  <a class="btn btn-seal nav-cta" href="#contact"><span class="en-only">Register</span><span class="zh-only">報名</span></a>
+  <a class="btn btn-ink top-cta" href="#home" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </a>
+</div>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <button class="menu-toggle drawer-close-toggle" type="button" aria-label="Close menu" id="drawerCloseBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile" id="drawerNav"></nav>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="sec" id="home">
+  <div class="hero">
+    <div class="bg" role="img" aria-label="Wang Ximeng, A Thousand Li of Rivers and Mountains, 1113"></div>
+    <div class="shade"></div>
+    <div class="wrap hero-inner">
+      <div class="kicker"><span class="en-only">Faculty of Humanities · The Hong Kong Polytechnic University</span><span class="zh-only">香港理工大學 人文學院</span></div>
+      <h1>
+        <span class="en-only">PolyU AI <span class="amp">×</span> Digital Humanities Awards 2026</span>
+        <span class="zh-only">理大人工智能 <span class="amp">×</span> 數位人文獎 2026</span>
+      </h1>
+      <div class="zh-title"><span class="en-only">Theme — AI &amp; Classics</span><span class="zh-only">主題 — 人工智能與經典</span></div>
+      <p class="lead">
+        <span class="en-only">Use generative AI and digital humanities methods to explore classical texts, thought, premodern history and culture, translation, and language — connecting classical knowledge with the future.</span>
+        <span class="zh-only">運用生成式人工智能與數位人文方法，研習古典文本、經典思想、古代歷史文化、翻譯與語言——為古典知識搭建通往未來的橋樑。</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-seal" href="#contact">
+          <span class="en-only">Register now</span><span class="zh-only">立即報名</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost btn-down" href="#about"><span class="en-only">View competition details</span><span class="zh-only">比賽章程</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      </div>
+      <div class="meta">
+        <div class="item"><div class="k"><span class="en-only">Registration closes</span><span class="zh-only">報名截止</span></div><div class="v"><span class="en-only">30 Sep 2026</span><span class="zh-only">2026年9月30日</span></div></div>
+        <div class="item"><div class="k"><span class="en-only">First round Closes</span><span class="zh-only">初賽截止</span></div><div class="v"><span class="en-only">31 Dec 2026</span><span class="zh-only">2026年12月31日</span></div></div>
+        <div class="item"><div class="k"><span class="en-only">Grand prize</span><span class="zh-only">冠軍獎金</span></div><div class="v">HK$10,000</div></div>
+        <div class="item"><div class="k"><span class="en-only">Entry format</span><span class="zh-only">參賽資格</span></div><div class="v"><span class="en-only">Individual or teams of 2 – 4 PolyU FH students</span><span class="zh-only">1 – 4 人（理大人文學院學生）</span></div></div>
+      </div>
+    </div>
+    <button class="art-info" type="button" aria-label="Artwork reference">
+      <span class="i">i</span>
+      <span class="txt"><span class="en-only">Wang Ximeng, “A Thousand Li of Rivers and Mountains” (detail), Northern Song, 1113</span><span class="zh-only">王希孟《千里江山圖》卷（局部）· 北宋 · 1113</span></span>
+    </button>
+    <div class="credit"><span class="en-only">Wang Ximeng, “A Thousand Li of Rivers and Mountains” (detail), Northern Song, 1113</span><span class="zh-only">王希孟《千里江山圖》卷（局部）· 北宋 · 1113</span></div>
+  </div>
+
+  <!-- Qingming handscroll band -->
+  <div class="scrollband">
+    <div class="track">
+      <img src="assets/hist-qingming-scroll.jpg" alt="" />
+      <img src="assets/hist-qingming-scroll.jpg" alt="" />
+    </div>
+    <button class="art-info" type="button" aria-label="Artwork reference">
+      <span class="i">i</span>
+      <span class="txt"><span class="en-only">Zhang Zeduan, “Along the River During the Qingming Festival”, Northern Song — the full handscroll</span><span class="zh-only">張擇端《清明上河圖》全卷 · 北宋</span></span>
+    </button>
+  </div>
+  <div class="band-caption"><span class="en-only">Zhang Zeduan, “Along the River During the Qingming Festival”, Northern Song — the full handscroll</span><span class="zh-only">張擇端《清明上河圖》全卷 · 北宋</span></div>
+
+</section>
+
+<!-- ============ ABOUT (一 + 三) ============ -->
+<section class="sec" id="about">
+  <div class="wrap sec-pad" style="padding-top:0">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <div class="twocol">
+      <div>
+        <h1 class="display reveal" id="about-title" data-nav-anchor><span class="en-only">Competition Objectives</span><span class="zh-only">比賽宗旨</span></h1>
+        <p class="intro reveal"><span class="en-only">The PolyU AI × Digital Humanities Awards 2026 is an competition for undergraduate students in the Faculty of Humanities at The Hong Kong Polytechnic University.</span><span class="zh-only">「理大人工智能 × 數位人文獎 2026」是專為香港理工大學人文學院本科生舉辦的校內活動。</span></p>
+        <div class="prose reveal" style="margin-top:1.6rem">
+          <p><span class="en-only">With “AI & Classics” as its theme, the competition encourages students to use artificial intelligence, digital humanities, and related technologies to study classical texts, thought, premodern history and culture, translation, and language in depth, thereby opening new possibilities for classical studies.</span><span class="zh-only">本屆比賽以<b>「人工智能與經典」</b>為主題，旨在鼓勵學生運用人工智能、數位人文及相關科技，深入研習古典文獻、經典思想、歷史文化、翻譯與語言分析，從而推動人工智能與古典研究的跨界融合。</span></p>
+        </div>
+      </div>
+      <figure class="art reveal">
+        <img src="assets/hist-yongle-dadian.jpg" width="1011" height="1800" alt="Manuscript page from the Yongle Encyclopedia with a botanical drawing and vermilion rulings" loading="lazy" />
+        <button class="art-info" type="button" aria-label="Artwork reference">
+          <span class="i">i</span>
+          <span class="txt"><span class="en-only">Page from the “Great Encyclopaedia of the Yongle Reign” (Yongle dadian), Ming dynasty</span><span class="zh-only">《永樂大典》內頁 · 明</span></span>
+        </button>
+        <figcaption><span class="en-only">Page from the “Great Encyclopaedia of the Yongle Reign” (Yongle dadian), Ming dynasty</span><span class="zh-only">《永樂大典》內頁 · 明</span></figcaption>
+      </figure>
+    </div>
+
+    <!-- Eligibility (三) -->
+    <div class="block-gap" id="eligibility">
+      <div class="folio reveal" aria-hidden="true"></div>
+      <h2 class="display reveal" id="eligibility-title" data-nav-anchor><span class="en-only">Eligibility</span><span class="zh-only">參賽資格</span></h2>
+      <div class="twocol block-gap" style="margin-top:clamp(1.8rem,4vw,3rem)">
+        <div class="reveal">
+          <p style="margin:0;max-width:60ch;color:var(--ink-soft)"><span class="en-only">Applicants must be full-time undergraduate students of the PolyU Faculty of Humanities, enrolled in one of the following programmes:</span><span class="zh-only">參賽者必須為香港理工大學人文學院的全日制本科生，並就讀於以下課程之一：</span></p>
+          <ul class="list-clean">
+            <li><span class="en-only">Bachelor’s Degree Scheme in Humanities</span><span class="zh-only">人文學科課程組合</span></li>
+            <li><span class="en-only">BA (Hons) in Chinese History and Culture</span><span class="zh-only">中國歷史及文化（榮譽）文學士</span></li>
+            <li><span class="en-only">BA (Hons) in English and Applied Linguistics</span><span class="zh-only">英文及應用語言學（榮譽）文學士</span></li>
+            <li><span class="en-only">BA (Hons) in Linguistics and Translation</span><span class="zh-only">語言學及翻譯學（榮譽）文學士</span></li>
+            <li><span class="en-only">BSc (Hons) in Language Science and Analytics</span><span class="zh-only">語言科學與語言數據分析（榮譽）理學士</span></li>
+            <li><span class="en-only">BSc (Hons) in Speech Therapy</span><span class="zh-only">言語治療（榮譽）理學士</span></li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="pull no-green-copy sans-copy">
+            <h4 class="no-song-zh"><span class="en-only">Team rules</span><span class="zh-only">組隊規則</span></h4>
+            <p class="fine" style="margin-bottom:.8rem"><span class="en-only">Enter individually or in teams of 2 to 4; no more than 4 members per team.</span><span class="zh-only">可個人參賽，亦可 2 至 4 人組隊，每隊最多 4 人。</span></p>
+            <p class="fine" style="margin-bottom:.8rem"><span class="en-only"> Each student may join only one team; each team may submit only one entry.</span><span class="zh-only">每名學生只可作為一隊之正式成員，每隊只可提交一份作品。</span></p>
+            <p class="fine"><span class="en-only">Cross-programme teams are encouraged, but all members must be enrolled in an eligible programme.</span><span class="zh-only">鼓勵跨學科組隊，但所有隊員均須來自上述合資格課程。</span></p>
+          </div>
+          <p class="no-green-copy" style="color:var(--ink-soft);font-size:.88rem;margin-top:1.2rem"><span class="en-only">The Organising Committee reserves the right to verify student status and team eligibility.</span><span class="zh-only">主辦單位保留核實學生身份及參賽資格之權利。</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THEME (二) ============ -->
+<section class="sec" id="theme">
+  <div class="imageband">
+    <img src="assets/hist-lantingxu.jpg" width="3840" height="1259" alt="The Lantingji Xu calligraphy scroll by Wang Xizhi" loading="lazy" />
+    <button class="art-info" type="button" aria-label="Artwork reference">
+      <span class="i">i</span>
+      <span class="txt"><span class="en-only">Wang Xizhi, “Preface to the Orchid Pavilion Collection” (Lantingji Xu), Tang copy</span><span class="zh-only">王羲之《蘭亭集序》（唐摹本）</span></span>
+    </button>
+    <div class="cap"><span class="en-only">Wang Xizhi, “Preface to the Orchid Pavilion Collection” (Lantingji Xu), Tang copy</span><span class="zh-only">王羲之《蘭亭集序》（唐摹本）</span></div>
+  </div>
+  <div class="wrap sec-pad">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <h1 class="display reveal" id="theme-title" data-nav-anchor><span class="en-only">Theme:  <i>   AI &amp; Classics</i></span><span class="zh-only">主題：「人工智能與經典」</span></h1>
+    <p class="intro reveal"><span class="en-only">“Classics” may be understood broadly as classical texts, thought, premodern history and culture, images of rare books and historical materials, translation of classics, and related forms of knowledge transmission. Entries may also extend to classical language, reception history, interpretation of classical texts, or cross-cultural translation, provided that their connection to classics or classical learning is clearly explained.</span><span class="zh-only">所謂「經典」可廣義理解為古典文本、經典思想、古代歷史文化、古籍與歷史材料圖像、經典翻譯及相關知識傳播；亦可延伸至古典語言、古典接受史、經典詮釋或跨文化翻譯，但須清楚說明其與「經典」或「古典學習」的關聯。</span></p>
+
+    <div class="block-gap">
+      <span class="label bare reveal accent-red"><span class="en-only">Possible project directions</span><span class="zh-only">作品方向</span></span>
+      <ul class="ex-list reveal" style="margin-top:1.4rem">
+        <li><span class="num">1</span><div class="txt"><span class="en-only">Use generative AI to support reading of classical texts, comparative translation, annotation writing, learning activities or interactive Q&amp;A.</span><span class="zh-only">應用生成式 AI 協助經典文本導讀、翻譯比較、註釋設計、學習活動或互動問答。</span></div></li>
+        <li><span class="num">2</span><div class="txt"><span class="en-only">Apply NLP, NER, knowledge graphs, GIS and data visualisation to analyse classical texts or historical materials.</span><span class="zh-only">運用 NLP、NER、知識圖譜、GIS、資料視覺化等方法分析古典文本或歷史材料。</span></div></li>
+        <li><span class="num">3</span><div class="txt"><span class="en-only">Design an automated AI-agent workflow that connects source extraction, data organisation, content and relationship analysis, and digital presentation for wider dissemination.</span><span class="zh-only">設計自動化 AI agent workflow，把「提取史料／文本 → 組織與標註 → 分析內容與關係 → 數位化呈現與傳播」串連為完整流程。</span></div></li>
+        <li><span class="num">4</span><div class="txt"><span class="en-only">Integrate AI-enhanced DH tools (CBDB, MARKUS, DocuSky, Academia Sinica DH platform) for annotation, extraction of persons and place names, comparison and visual analysis.</span><span class="zh-only">結合 AI-enhanced DH 工具（如 CBDB、MARKUS、DocuSky 及中研院數位人文平台）進行文本標註、人物／地名抽取、資料比對與視覺化分析。</span></div></li>
+        <li><span class="num">5</span><div class="txt"><span class="en-only">Build datasets, models or retrieval tools for classical texts, figures, place names, concepts or images.</span><span class="zh-only">建立與古典文獻、人物、地名、概念、圖像相關的資料集、模型或檢索工具。</span></div></li>
+        <li><span class="num">6</span><div class="txt"><span class="en-only">Use AR/VR, spatial computing, or multimodal storytelling to reimagine classical learning, the presentation of rare books and historical materials, or cultural communication.</span><span class="zh-only">利用 AR／VR、空間運算、多模態敘事重構古典學習、古籍展示或文化傳播體驗。</span></div></li>
+        <li><span class="num">7</span><div class="txt"><span class="en-only">Text analysis, comparative translation or recitation reconstruction of classical languages (e.g. Classical Chinese, Sanskrit); reception-history and interpretation of cross-cultural classics.</span><span class="zh-only">古典語言（如古典漢語、梵文）的文本分析、翻譯比較或誦讀重構，以及跨文化經典的接受史與詮釋研究。</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMATS (四) ============ -->
+<section class="sec" id="formats">
+  <div class="wrap sec-pad" style="padding-top:0">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <h1 class="display reveal" id="formats-title" data-nav-anchor><span class="en-only">Accepted Forms of Submission</span><span class="zh-only">可接受的作品形式</span></h1>
+    <p class="intro reveal"><span class="en-only">Entries are not restricted to a single format and may combine several forms within one project. Each entry must clearly address its relationship to the “AI &amp; Classics” theme and explain its educational, research, or public-communication value.</span><span class="zh-only">作品不限單一形式，可將多種形式結合於單一作品。作品須清楚回應和主題「AI &amp; Classics」關係，並說明其教育、研究或公共傳播價值。</span></p>
+
+    <div class="plates block-gap reveal">
+      <div class="plate">
+        <div class="no">1</div>
+        <h3><span class="en-only">Research-oriented</span><span class="zh-only">研究型作品</span></h3>
+        <p><span class="en-only">Use digital-humanities technologies and quantitative methods to analyse and compare data derived from classical texts.</span><span class="zh-only">透過數位人文技術與量化分析，對古典文獻的數據進行分析與比較。</span></p>
+        <div class="kinds"><span class="en-only">Datasets · text corpora · charts · maps · social networks · GIS · knowledge graphs · comparative translation · classical text analysis</span><span class="zh-only">資料集 · 文本語料庫 · 圖表 · 社交網絡 · 地理信息系統（GIS）· 知識圖譜 · 翻譯比較研究</span></div>
+      </div>
+      <div class="plate">
+        <div class="no">2</div>
+        <h3><span class="en-only">Tool-oriented</span><span class="zh-only">工具型作品</span></h3>
+        <p><span class="en-only">Develop software or tools specifically designed for processing classical texts to enhance data-processing efficiency.</span><span class="zh-only">開發專為處理古典文獻的工具，提升資料處理效率。</span></p>
+        <div class="kinds"><span class="en-only">OCR tools · NLP tools · information-retrieval systems · AI agents · image-classification models</span><span class="zh-only">光學字元辨識（OCR）工具 · 自然語言處理（NLP）工具 · 檢索系統 · AI Agent · 圖像分類模型</span></div>
+      </div>
+      <div class="plate">
+        <div class="no">3</div>
+        <h3><span class="en-only">Education-oriented</span><span class="zh-only">教學型作品</span></h3>
+        <p><span class="en-only">Combine digital-humanities technologies with literary and historical knowledge to design engaging and feasible teaching plans or resources.</span><span class="zh-only">結合數位人文技術與文史知識，設計有趣、可行的教學方案或資源。</span></p>
+        <div class="kinds"><span class="en-only">Interactive teaching materials · assessment tools · educational videos · course-module designs</span><span class="zh-only">互動教材 · 評估工具 · 課程單元設計</span></div>
+      </div>
+      <div class="plate">
+        <div class="no">4</div>
+        <h3><span class="en-only">Exhibition-oriented</span><span class="zh-only">展示型作品</span></h3>
+        <p><span class="en-only">Transform classical texts or historical materials into immersive, interactive and publicly accessible media.</span><span class="zh-only">將古典文獻或歷史材料轉化為沉浸式、可互動的媒介。</span></p>
+        <div class="kinds"><span class="en-only">AR / VR experiences · virtual exhibitions · interactive historical games · 3D reconstructions · digital archives · AI chatbots · multimodal narratives</span><span class="zh-only">擴增實境（AR）／虛擬實境（VR）體驗 · 互動式歷史遊戲 · 3D 空間復原 · 數位檔案館 · AI 聊天機器人 · 多模態敘事作品</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUBMIT (五) ============ -->
+<section class="sec" id="submit">
+  <div class="wrap sec-pad" style="padding-top:0">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <h1 class="display reveal" id="submit-title" data-nav-anchor><span class="en-only">Submission Requirements</span><span class="zh-only">提交要求</span></h1>
+
+        <p class="intro reveal"><span class="en-only">All entries and submission materials may be written and presented entirely in Chinese or entirely in English.</span><span class="zh-only">所有作品及提交材料可用全中文或全英文撰寫及展示。</span></p>
+
+    <div class="steps block-gap reveal">
+      <div class="step">
+        <div class="no">1</div>
+        <div>
+          <div class="phase"><span class="en-only">Stage 1 · Registration</span><span class="zh-only">階段一 · 報名</span></div>
+          <div class="when"><span class="en-only">30 Sep 2026</span><span class="zh-only">2026年9月30日截止</span></div>
+        </div>
+        <div>
+          <h3><span class="en-only">Register Online &amp; Verify Eligibility</span><span class="zh-only">網上報名並核實資格</span></h3>
+          <ul>
+            <li><span class="en-only">Team name; each member’s name, student ID and programme; a designated contact person and email.</span><span class="zh-only">隊伍名稱；每位隊員的姓名、學生編號及就讀課程；指定聯絡人及電郵。</span></li>
+            <li><span class="en-only">Provisional title; submission type (Research / Tool / Education / Exhibition); and a paragraph on the link to “AI &amp; Classics”.</span><span class="zh-only">暫定作品題目、作品類型（研究／工具／教學／展示），及一段作品與「AI &amp; Classics」主題關聯的說明。</span></li>
+            <li><span class="en-only">Confirmation of agreement to the competition rules and the AI-use, academic-integrity and IP terms, and that the entry is original.</span><span class="zh-only">確認已閱讀並同意比賽規則、AI 使用、學術誠信及知識產權條款，且作品為原創。</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="no">2</div>
+        <div>
+          <div class="phase"><span class="en-only">Stage 2 · First round</span><span class="zh-only">階段二 · 初賽</span></div>
+          <div class="when"><span class="en-only">31 Dec 2026</span><span class="zh-only">2026年12月31日截止</span></div>
+        </div>
+        <div>
+          <h3><span class="en-only">Submit Your Proposal &amp; Prototype</span><span class="zh-only">提交作品簡報及原型</span></h3>
+          <ul>
+            <li><span class="en-only">A completed online application form and project abstract.</span><span class="zh-only">網上報名表及作品摘要。</span></li>
+            <li><span class="en-only">Slide deck (PDF/PPT): articulate the problem, review relevant literature, explain the AI method, and present preliminary findings or progress.</span><span class="zh-only">作品簡報（PDF／PPT）：闡述問題、簡述相關學界研究、說明 AI 應用方法、展示初步研究成果／作品進展。</span></li>
+            <li><span class="en-only">AI Use Statement: tools used, purposes, and the scope of human revision, verification and judgement.</span><span class="zh-only">AI 使用聲明：列明所使用的生成式 AI 工具及其用途，以及人手修改、驗證與判斷的範圍。</span></li>
+            <li><span class="en-only">Source Declaration: source and licensing status of all referenced materials and third-party models.</span><span class="zh-only">資料來源聲明：標明所有引用的文本、史料、譯本、圖像、地圖、資料集或第三方模型的來源或授權情況。</span></li>
+            <li><span class="en-only">Preliminary version / prototype appropriate to the type. An unfinished version is acceptable — a text-only description is not.</span><span class="zh-only">初步版本／原型：按作品類型提交可展示的初步成果。容許初步、未完成版本，但不接受純文字描述。</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="no">3</div>
+        <div>
+          <div class="phase"><span class="en-only">Stage 3 · After shortlisting</span><span class="zh-only">階段三 · 入圍後最終提交</span></div>
+          <div class="when"><span class="en-only">Jan 2027</span><span class="zh-only">2027年1月</span></div>
+        </div>
+        <div>
+          <h3><span class="en-only">Final Submission &amp; Live Defence</span><span class="zh-only">最終提交及決賽答辯</span></h3>
+          <ul>
+            <li><span class="en-only">Project video: max 5 minutes, MP4, minimum 720p.</span><span class="zh-only">作品介紹短片：最長 5 分鐘，MP4 格式，解析度最低 720p。</span></li>
+            <li><span class="en-only">Revised final slide deck covering problem, scholarship, method, findings and limitations.</span><span class="zh-only">簡報：詳述問題意識、相關學界研究、AI 應用方法、最終研究成果及研究限制。</span></li>
+            <li><span class="en-only">A demonstrable version, recorded demo or test link (accessible to judges for at least 3 months).</span><span class="zh-only">示範版本或連結：測試連結至少三個月内對評審開放。</span></li>
+            <li><span class="en-only">Revised AI Use &amp; Source Declarations.</span><span class="zh-only">修訂版 AI 使用聲明及資料來源聲明。</span></li>
+            <li><span class="en-only">Attend the on-site or online final, including the presentation and demonstration.</span><span class="zh-only">出席現場／線上決賽，進行簡報及示範。</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ JUDGING (六 + 七) ============ -->
+<section class="sec" id="judging">
+  <div class="wrap sec-pad" style="padding-top:0">
+    <h1 class="display reveal" id="judging-title" data-nav-anchor><span class="en-only">Judging Criteria</span><span class="zh-only">評審準則</span></h1>
+    <p class="intro reveal"><span class="en-only">Entries will be assessed across six dimensions: problem relevance, feasibility, innovation, scholarly rigour, social value, and communication.</span><span class="zh-only">本比賽會從問題關聯、可行性、創新、學術嚴謹、社會價值及表達能力六方面進行評審。</span></p>
+
+    <div class="criteria block-gap reveal">
+      <div class="crit" style="--w:.2">
+        <div><h3><span class="en-only">Problem Definition &amp; Relevance to Classics</span><span class="zh-only">問題界定與 Classics／Humanities 關聯</span></h3><p><span class="en-only">Whether the project clearly identifies a problem in classical texts, cultures, or premodern history/language, and explains its genuine educational or research relevance.</span><span class="zh-only">是否清楚指出經典文本、古典文化或古代歷史／語言問題，並說明教育或研究上的實際需要。</span></p></div>
+        <div class="weight"><div class="pct">20%</div><div class="bar"><span></span></div></div>
+      </div>
+      <div class="crit" style="--w:.2">
+        <div><h3><span class="en-only">Feasibility, Functionality &amp; Technical Realisation</span><span class="zh-only">可行性與功能性／技術實踐</span></h3><p><span class="en-only">Whether the work is workable and technically sound; for tool prototypes, whether core functions are demonstrated effectively.</span><span class="zh-only">作品是否具可操作性、技術設計是否合理；如屬工具原型，是否能有效展示其功能。</span></p></div>
+        <div class="weight"><div class="pct">20%</div><div class="bar"><span></span></div></div>
+      </div>
+      <div class="crit" style="--w:.2">
+        <div><h3><span class="en-only">Innovation &amp; Creativity</span><span class="zh-only">創新與創意</span></h3><p><span class="en-only">Whether the project integrates AI and humanities content in an original way, rather than merely using AI for routine tasks or basic demonstration.</span><span class="zh-only">AI 與人文內容的結合方式是否新穎，而非僅停留於常規應用或示範性使用。</span></p></div>
+        <div class="weight"><div class="pct">20%</div><div class="bar"><span></span></div></div>
+      </div>
+      <div class="crit" style="--w:.2">
+        <div><h3><span class="en-only">Scholarly Quality &amp; Research Rigour</span><span class="zh-only">學術質素與研究嚴謹度</span></h3><p><span class="en-only">Whether texts, sources, translations, concepts and references are handled accurately and the project is methodologically grounded and well evidenced.</span><span class="zh-only">文本、史料、譯本、概念與文獻運用是否準確，論證是否有方法、有依據。</span></p></div>
+        <div class="weight"><div class="pct">20%</div><div class="bar"><span></span></div></div>
+      </div>
+      <div class="crit" style="--w:.1">
+        <div><h3><span class="en-only">Social Impact, Sustainability &amp; Responsible AI</span><span class="zh-only">社會影響、可持續性與負責任 AI</span></h3><p><span class="en-only">Whether the project addresses ethics, copyright, bias, sustainability, scalability and educational equity, and reflects in depth on the limitations of AI.</span><span class="zh-only">是否考慮倫理、版權、偏差、可持續性、可擴展性及教育公平等問題，並能深入反思 AI 的能力與限制。</span></p></div>
+        <div class="weight"><div class="pct">10%</div><div class="bar"><span></span></div></div>
+      </div>
+      <div class="crit" style="--w:.1">
+        <div><h3><span class="en-only">Presentation Skills</span><span class="zh-only">展示與表達能力</span></h3><p><span class="en-only">Whether the team presents problem, method, findings and limitations clearly in the video and final presentation, and responds effectively to the panel’s questions.</span><span class="zh-only">是否能在作品短片及決賽簡報中清晰介紹研究問題、AI 應用方法、成果及限制，並有效回應評審提問。</span></p></div>
+        <div class="weight"><div class="pct">10%</div><div class="bar"><span></span></div></div>
+      </div>
+    </div>
+
+    <!-- Procedure (七) -->
+    <div class="block-gap" id="assessment">
+      <h2 class="display reveal" id="assessment-title" data-nav-anchor style="font-size:clamp(1.8rem,3.6vw,3rem)"><span class="en-only">Assessment Procedure</span><span class="zh-only">評審程序</span></h2>
+      <div class="stages reveal" style="margin-top:clamp(1.8rem,4vw,2.8rem)">
+        <div class="stage"><div class="no">1</div><h3><span class="en-only">Preliminary Review</span><span class="zh-only">初審</span></h3><p><span class="en-only">Preliminary review of written and media materials according to the published criteria.</span><span class="zh-only">書面及媒體材料初審，由評審根據公布準則評閱所有初賽作品。</span></p></div>
+        <div class="stage"><div class="no">2</div><h3><span class="en-only">Shortlist &amp; Revise</span><span class="zh-only">入圍及修訂</span></h3><p><span class="en-only">Shortlisted teams will be announced and invited to revise their projects based on the judging panel’s feedback.</span><span class="zh-only">公布入圍名單，入圍隊伍按評審意見修訂作品。</span></p></div>
+        <div class="stage"><div class="no">3</div><h3><span class="en-only">Final Presentation</span><span class="zh-only">決賽</span></h3><p><span class="en-only">Shortlisted teams present and demonstrate to a multidisciplinary judging panel.</span><span class="zh-only">入圍隊伍進行簡報及示範，由跨學科評審團作最後評選。</span></p></div>
+      </div>
+      <p class="note reveal" style="margin-top:1.6rem"><span class="en-only">Each shortlisted entry will normally be reviewed by at least three judges with backgrounds in history, language, literature, translation, language sciences, digital humanities, and/or AI applications. External experts may be invited to strengthen fairness and interdisciplinary judgement.</span><span class="zh-only">每份入圍作品原則上由不少於 3 名評審審閱，評審背景將盡量涵蓋歷史、語言、文學、翻譯、語言科學、數位人文或 AI 應用。主辦單位可邀請校外專家參與，以加強公平性及跨學科視角。</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AWARDS (八) ============ -->
+<section class="sec on-dark" id="awards">
+  <div class="imageband">
+    <img src="assets/hist-fuchun.jpg" width="2200" height="804" alt="Ink landscape from Dwelling in the Fuchun Mountains by Huang Gongwang" loading="lazy" />
+    <button class="art-info" type="button" aria-label="Artwork reference">
+      <span class="i">i</span>
+      <span class="txt"><span class="en-only">Huang Gongwang, “Dwelling in the Fuchun Mountains” (detail), Yuan dynasty</span><span class="zh-only">黃公望《富春山居圖》（局部）· 元</span></span>
+    </button>
+    <div class="cap"><span class="en-only">Huang Gongwang, “Dwelling in the Fuchun Mountains” (detail), Yuan dynasty</span><span class="zh-only">黃公望《富春山居圖》（局部）· 元</span></div>
+  </div>
+  <div class="wrap sec-pad">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <h1 class="display reveal" id="awards-title" data-nav-anchor style="color:#faf5e6"><span class="en-only">Awards</span><span class="zh-only">獎項與奬金</span></h1>
+
+    <div class="prizes block-gap reveal">
+      <div class="prize champion"><div class="rank"><span class="en-only">Champion</span><span class="zh-only">冠軍</span><small><span class="en-only">Champion</span><span class="zh-only">Champion</span></small></div><div class="amt">HK$10,000</div></div>
+      <div class="prize"><div class="rank"><span class="en-only">First Runner-up</span><span class="zh-only">亞軍</span><small>First Runner-up</small></div><div class="amt">HK$8,000</div></div>
+      <div class="prize"><div class="rank"><span class="en-only">Second Runner-up</span><span class="zh-only">季軍</span><small>Second Runner-up</small></div><div class="amt">HK$5,000</div></div>
+      <div class="prize"><div class="rank"><span class="en-only">Outstanding · 5 awards</span><span class="zh-only">優異獎 · 5 名／隊</span><small><span class="en-only">Outstanding Awards</span><span class="zh-only">Outstanding</span></small></div><div class="amt">HK$2,000 <span style="font-size:1rem;color:var(--dark-soft)"><span class="en-only">each</span><span class="zh-only">每名／隊</span></span></div></div>
+      <div class="prize wide"><div class="rank"><span class="en-only">Special Commendation (Optional)</span><span class="zh-only">特別嘉許獎</span><small>Special Commendation</small></div><div class="amt" style="font-size:1.3rem;line-height:1.5"><span class="en-only">Certificates may be awarded for Best Creativity, Best Presentation, Best Scholarly Rigour, and other categories.</span><span class="zh-only">最佳創意、最佳展示、最佳學術嚴謹度等，可頒發證書</span></div></div>
+    </div>
+    <p class="awards-note reveal"><span class="en-only">Certificates are awarded to winners and shortlisted entries. Awardees may be invited to showcase their work at the award ceremony, on the competition website, on social media, in exhibitions or in related teaching activities.</span><span class="zh-only">所有得獎及入圍作品可獲證書；主辦單位可邀請得獎者於頒獎典禮、網站、社交媒體、展覽或教學活動中展示其成果。</span></p>
+    <p class="awards-note small reveal"><span class="en-only">Any internal disputes among team members over prize distribution, contributions, or authorship should be resolved by the team members themselves. The Organising Committee bears no obligation to mediate.</span><span class="zh-only">團隊內部若因獎金分配、貢獻度、作者署名等產生糾紛，應由團隊成員自行協商解決；主辦單位不承擔任何調解、仲裁或法律責任。</span></p>
+  </div>
+</section>
+
+<!-- ============ TIMELINE (九) ============ -->
+<section class="sec" id="timeline">
+  <div class="wrap sec-pad">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <h1 class="display reveal" id="timeline-title" data-nav-anchor><span class="en-only">Indicative Timeline</span><span class="zh-only">重要日期</span></h1>
+
+    <div class="timeline block-gap reveal">
+      <div class="tl-item"><div class="tl-when"><span class="en-only">Jun 2026</span><span class="zh-only">2026年6月</span></div><div class="tl-what no-green-copy"><span class="en-only">Registration opens.</span><span class="zh-only">開始接受報名</span></div></div>
+      <div class="tl-item"><div class="tl-when"><span class="en-only">Jun – Sep 2026</span><span class="zh-only">2026年6月 – 9月</span></div><div class="tl-what no-green-copy"><span class="en-only">Foundational workshops on prompt engineering, NER, text analysis, and related digital humanities methods.</span><span class="zh-only">基礎培訓工作坊（prompt engineering、NER、文本分析等）</span></div></div>
+      <div class="tl-item"><div class="tl-when"><span class="en-only">Jun – Sep 2026</span><span class="zh-only">2026年6月 – 9月</span></div><div class="tl-what no-green-copy"><span class="en-only">Expert talks and advanced workshops on CBDB, GeoAI, classical-text AI analysis, and related topics.</span><span class="zh-only">專家講座及進階工作坊（CBDB、GeoAI、古典文本 AI 分析等）</span></div></div>
+      <div class="tl-item key"><div class="tl-when"><span class="en-only">30 Sep 2026</span><span class="zh-only">2026年9月30日</span></div><div class="tl-what no-green-copy"><span class="en-only">Registration deadline.</span><span class="zh-only">比賽報名截止</span></div></div>
+      <div class="tl-item key"><div class="tl-when"><span class="en-only">31 Dec 2026</span><span class="zh-only">2026年12月31日</span></div><div class="tl-what no-green-copy"><span class="en-only">First-round submission deadline.</span><span class="zh-only">截止提交初賽作品</span></div></div>
+      <div class="tl-item"><div class="tl-when"><span class="en-only">Jan 2027</span><span class="zh-only">2027年1月</span></div><div class="tl-what no-green-copy"><span class="en-only">Shortlist announced and final presentation arrangements released.</span><span class="zh-only">公布入圍名單及決賽安排</span></div></div>
+      <div class="tl-item key"><div class="tl-when"><span class="en-only">Mid Jan 2027</span><span class="zh-only">2027年1月中</span></div><div class="tl-what no-green-copy"><span class="en-only">Final presentation &amp; award ceremony.</span><span class="zh-only">決賽及頒獎典禮</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RULES (十一 + 十二) ============ -->
+<section class="sec" id="rules">
+  <div class="wrap sec-pad" style="padding-top:0">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <h1 class="display reveal" id="rules-title" data-nav-anchor><span class="en-only">AI Use, Academic Integrity &amp; Copyright</span><span class="zh-only">AI 使用、學術誠信與版權要求</span></h1>
+
+    <div class="twocol block-gap">
+      <ul class="integ-points reveal">
+        <li><span class="mk">1</span><div><span class="en-only">All entries must be original — no plagiarism, outsourcing, misappropriation or resubmission of previously awarded work.</span><span class="zh-only">所有作品必須為原創，不得抄襲、委托、冒用或重複提交曾於其他比賽獲獎之作品。</span></div></li>
+        <li><span class="mk">2</span><div><span class="en-only">If generative AI is used, teams must declare the tools used, the prompting approach, the scope of AI-generated content, and the extent of human revision, verification, and judgement.</span><span class="zh-only">如作品使用生成式 AI，必須申報所使用的工具、提示詞、生成內容範圍及人工修訂情況。</span></div></li>
+        <li><span class="mk">3</span><div><span class="en-only">The final defence will include an integrity-check session. Teams must be able to explain, reproduce, and, where applicable, re-run any part of their work on the spot, and locate the original source of any citation when requested.</span><span class="zh-only">決賽答辯設誠信核查環節：隊伍須能即場解釋、重現並重新運行作品的任何部分，並即時定位任何引文的原始出處。</span></div></li>
+        <li><span class="mk">4</span><div><span class="en-only">For rare books, maps, images or translation, every cited source must be traceable to a genuine original; AI-generated or unverifiable “sources” will not be accepted.</span><span class="zh-only">就涉及古籍、地圖、圖像或翻譯的作品，所有引用之來源均須可追溯至真實原件；凡屬 AI 生成或無法核實的「來源」概不符合要求。</span></div></li>
+        <li><span class="mk">5</span><div><span class="en-only">Shortlisted teams must keep basic working records, including prompt logs, version histories, source-checking records, and relevant screenshots, until the assessment process is completed. The judging panel may request or spot-check these records.</span><span class="zh-only">入圍隊伍須保存基本工作紀錄（提示詞紀錄、版本對照、來源核查截圖）至評審程序結束；評審團可要求提交或抽查。</span></div></li>
+        <li><span class="mk">6</span><div><span class="en-only">Participants must comply with copyright, privacy, data protection, and research ethics requirements. Third-party materials must be properly licensed, used with permission, or cited in accordance with fair-use or fair-dealing principles where applicable.</span><span class="zh-only">參賽者須遵守版權、私隱、資料保護及研究倫理；使用第三方素材須確保合法授權或合理引用。</span></div></li>
+      </ul>
+      <figure class="art reveal">
+        <img src="assets/hist-siku-quanshu.jpg" width="1024" height="1594" alt="A page from the Complete Library in Four Sections (Siku Quanshu)" loading="lazy" />
+        <button class="art-info" type="button" aria-label="Artwork reference">
+          <span class="i">i</span>
+          <span class="txt"><span class="en-only">“The Complete Library in Four Sections” (Siku Quanshu), Qing dynasty</span><span class="zh-only">《四庫全書》· 清</span></span>
+        </button>
+        <figcaption><span class="en-only">“The Complete Library in Four Sections” (Siku Quanshu), Qing dynasty</span><span class="zh-only">《四庫全書》· 清</span></figcaption>
+      </figure>
+    </div>
+
+    <!-- IP (十二) -->
+    <div class="block-gap" id="ip">
+      <div class="folio reveal" aria-hidden="true"></div>
+      <h2 class="display reveal" id="ip-title" data-nav-anchor style="font-size:clamp(1.8rem,3.6vw,3rem)"><span class="en-only">Intellectual Property &amp; Public Display</span><span class="zh-only">作品產權與公開展示</span></h2>
+      <div class="twocol" style="margin-top:clamp(1.8rem,4vw,2.8rem)">
+        <div class="prose reveal">
+          <p><span class="en-only">Copyright and intellectual property rights in the submitted work shall, in principle, remain with the participants.By submitting an entry, participants grant the Organising Committee a non-exclusive licence to use the submitted work for non-commercial educational, promotional, exhibition, archival, and publicity purposes, with proper acknowledgement of the author or team.</span><span class="zh-only">作品之著作權及知識產權原則上屬參賽者所有。參賽者授予主辦單位非專屬、僅限非商業教育及宣傳用途的使用權，並保留日後發表、繼續開發及商業轉化的一切權利。主辦單位使用作品時必定註明作者／隊伍。</span></p>
+        </div>
+        <div class="reveal">
+          <div class="pull no-green-copy sans-copy">
+            <h4 class="no-song-zh"><span class="en-only">Protecting sensitive work</span><span class="zh-only">保護具價值的作品</span></h4>
+            <p class="fine" style="margin-bottom:1rem"><span class="en-only">If a work contains complete source code, datasets, tools, or materials with commercialisation potential, participants may submit a demonstration version, recorded demo, or limited-access version for assessment.</span><span class="zh-only">如作品包含完整程式碼、資料集或具商業化潛力的工具，參賽者可只提交示範版本或限定存取版本。</span></p>
+            <p class="fine" style="opacity:.85"><span class="en-only">The Organising Committee reserves the right to revise, extend, or interpret the competition rules, timeline, and judging arrangements where necessary.</span><span class="zh-only">主辦單位保留對比賽細則、時程及評審安排作出修訂、延長或解釋之權利，並可於有需要時隨時修訂。</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ TRAINING (十) ============ -->
+<section class="sec" id="training">
+  <div class="wrap sec-pad" style="padding-top:0">
+    <div class="folio reveal" aria-hidden="true"></div>
+    <h1 class="display reveal" id="training-title" data-nav-anchor><span class="en-only">Training &amp; Support</span><span class="zh-only">培訓及支援</span></h1>
+
+    <div class="twocol block-gap">
+      <div class="reveal">
+        <div class="prose">
+          <p><span class="en-only">To raise the quality of submissions and encourage broader participation from humanities students, the competition is supported by open-access resources — workshops, demonstration videos, exemplar projects and an FAQ page. Students without advanced programming experience can begin with using existing AI tools, text analysis and instructional design.</span><span class="zh-only">為提高作品質素並鼓勵更多人文學生參與，比賽將提供公開培訓資源，包括工作坊、示範影片、範例作品及常見問題頁面。即使學生未具備高階編程能力，亦可先通過現成 AI 工具、文本分析與教學設計起步。</span></p>
+        </div>
+        <div class="pull no-green-copy sans-copy" style="margin-top:2rem">
+          <h4 class="no-song-zh"><span class="en-only">Resource</span><span class="zh-only">學習資源</span></h4>
+          <p class="fine"><a href="https://programminghistorian.org/" target="_blank" rel="noopener" style="color:var(--seal);font-weight:500">Programming Historian ↗</a> — <span class="en-only">peer-reviewed tutorials on digital methods for the humanities.</span><span class="zh-only">人文學科數位方法的同行評審教學。</span></p>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="label bare accent-red"><span class="en-only">Core workshop themes</span><span class="zh-only">核心培訓專題</span></span>
+        <ul class="topic-list" style="margin-top:1.2rem">
+          <li><span class="t-no">1</span><div><span class="en-only">Prompting LLMs for structured annotation in classical-text processing.</span><span class="zh-only">用大型語言模型提示詞對經典文本進行結構化標注。</span></div></li>
+          <li><span class="t-no">2</span><div><span class="en-only">Biographical information extraction from classical texts using deep-learning models.</span><span class="zh-only">運用深度學習模型從古典文本中抽取人物傳記資訊。</span></div></li>
+          <li><span class="t-no">3</span><div><span class="en-only">Multi-layered text analysis with LLMs, knowledge graphs and GIS.</span><span class="zh-only">LLM + 知識圖譜 + 地理資訊系統（GIS）的多層次文本分析。</span></div></li>
+          <li><span class="t-no">4</span><div><span class="en-only">Corpus tools and methods for language and translation studies.</span><span class="zh-only">面向語言與翻譯研究的語料工具與方法。</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT (十三) ============ -->
+<section class="sec" id="contact">
+  <div class="contact-band">
+    <div class="bg" role="img" aria-label="Frontispiece of the Diamond Sutra, 868 AD"></div>
+    <div class="shade"></div>
+    <div class="wrap inner">
+     
+    </div>
+    <button class="art-info" type="button" aria-label="Artwork reference">
+      <span class="i">i</span>
+      <span class="txt"><span class="en-only">Frontispiece of the Diamond Sutra, 868 AD — the world’s oldest dated printed book</span><span class="zh-only">《金剛經》扉畫 · 868——現存最早有紀年的雕版印刷書籍</span></span>
+    </button>
+    <div class="credit"><span class="en-only">Frontispiece of the Diamond Sutra, 868 AD — the world’s oldest dated printed book</span><span class="zh-only">《金剛經》扉畫 · 868——現存最早有紀年的雕版印刷書籍</span></div>
+  </div>
+
+  <div class="wrap sec-pad">
+    <div class="contact-cols">
+      <div class="cta-copy reveal">
+        <h2 id="contact-title" data-nav-anchor><span class="en-only">Register Now</span><span class="zh-only">立即報名</span></h2>
+        <p><span class="en-only">The official registration link and website are being finalised. Meanwhile, reach the Organising Committee by email to express interest.</span><span class="zh-only">官方報名連結尚在籌備中。同學可先電郵主辦單位表達參賽意向。</span></p>
+        <div class="cta-actions">
+          <a class="btn btn-seal" href="mailto:polyu.ai.dh.awards2026@polyu.edu.hk?subject=PolyU%20AI%20x%20DH%20Awards%202026%20Registration"><span class="en-only">Email the Organising Committee</span><span class="zh-only">電郵主辦單位</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="info-block">
+          <h4><span class="en-only">Enquiries</span><span class="zh-only">查詢</span></h4>
+          <ul class="info-list">
+            <li><span class="en-only">Registration link:</span><span class="zh-only">報名連結：</span> <em>TBC / 待定</em></li>
+            <li><span class="en-only">Enquiry email:</span><span class="zh-only">查詢電郵：</span> <a href="mailto:polyu.ai.dh.awards2026@polyu.edu.hk">polyu.ai.dh.awards2026@polyu.edu.hk</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logos">
+          <a href="https://www.polyu.edu.hk/tc/" data-href-en="https://www.polyu.edu.hk/" data-href-zh="https://www.polyu.edu.hk/tc/" target="_blank" rel="noopener noreferrer" aria-label="The Hong Kong Polytechnic University website">
+            <img class="polyu-logo" src="assets/polyu-logo-transparent.png" alt="The Hong Kong Polytechnic University" />
+          </a>
+          <span class="divider"></span>
+          <a href="https://www.polyu.edu.hk/fh/?sc_lang=tc" data-href-en="https://www.polyu.edu.hk/fh/" data-href-zh="https://www.polyu.edu.hk/fh/?sc_lang=tc" target="_blank" rel="noopener noreferrer" aria-label="Faculty of Humanities website">
+            <img class="faculty-logo" src="assets/faculty-humanities-logo-hd-transparent.png" alt="Faculty of Humanities, PolyU" />
+          </a>
+          <span class="divider"></span>
+          <a href="https://www.polyu.edu.hk/chc/" data-href-en="https://www.polyu.edu.hk/chc/?sc_lang=en" data-href-zh="https://www.polyu.edu.hk/chc/" target="_blank" rel="noopener noreferrer" aria-label="Department of Chinese History and Culture website">
+            <img class="chc-logo" src="assets/chc-logo-hd-transparent.png" alt="Department of Chinese History and Culture" />
+          </a>
+        </div>
+        <p><span class="en-only">PolyU AI × Digital Humanities Awards 2026 · AI &amp; Classics. University.</span><span class="zh-only">理大人工智能 × 數位人文獎 2026 ·人工智能與經典</span></p>
+      </div>
+      <div>
+        <h4><span class="en-only">Enquiries</span><span class="zh-only">查詢</span></h4>
+        <ul class="foot-links">
+          <li><a href="#contact-title"><span class="en-only">Enquiries &amp; Registration</span><span class="zh-only">查詢與報名</span></a></li>
+        </ul>
+        <div class="social-links" aria-label="Social media">
+          <a href="https://www.facebook.com/%E9%A6%99%E6%B8%AF%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%B8%E4%B8%AD%E5%9C%8B%E6%96%87%E5%8C%96%E5%AD%B8%E7%B3%BB-226470562120" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5h2.3V5.1c-.4-.1-1.8-.2-3.4-.2-3.3 0-5.6 2-5.6 5.7v3.2H4v3.8h3.3V24h4.1v-6.4h3.4l.5-3.8h-3.9V11c0-1.1.3-2.5 2.6-2.5z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/polyu_chc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2zm0 2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2V7.2A3.2 3.2 0 0 0 16.8 4H7.2zm4.8 3.6A4.4 4.4 0 1 1 12 16.4a4.4 4.4 0 0 1 0-8.8zm0 2A2.4 2.4 0 1 0 12 14.4a2.4 2.4 0 0 0 0-4.8zm5-2.25a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1z"/></svg>
+          </a>
+          <a href="" aria-label="Threads">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.7 10.8c-.2-3.9-2.3-6.1-5.8-6.1-2.1 0-3.8.9-4.9 2.5l1.8 1.2c.8-1.1 1.8-1.6 3.1-1.6 2.1 0 3.3 1.3 3.6 3.6-1-.5-2.2-.8-3.5-.8-3 0-5 1.6-5 4.1 0 2.4 2 4.1 4.7 4.1 2.2 0 4-1 5-2.7.7.6 1.1 1.4 1.1 2.3 0 2.6-2.3 4.3-5.8 4.3-4.4 0-7.2-3-7.2-7.8S7.6 6.1 12 6.1c2.3 0 4.1.8 5.5 2.5l1.7-1.4C17.5 5 15.1 4 12 4 6.3 4 2.6 7.9 2.6 13.9S6.3 23.8 12 23.8c4.9 0 8-2.5 8-6.4 0-2.8-1.8-5.1-2.3-6.6zm-5.9 4.8c-1.5 0-2.5-.8-2.5-1.9 0-1.2 1-1.9 2.7-1.9 1.4 0 2.6.3 3.6.9-.2 1.8-1.6 2.9-3.8 2.9z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCYaemytF-AjMplqH4_Ysyqg" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span><span class="en-only">© 2026 Faculty of Humanities, The Hong Kong Polytechnic University. All rights reserved.</span><span class="zh-only">© 2026 香港理工大學人文學院 版權所有</span></span>
+      <span class="seal-badge">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+        <span class="en-only">AI &amp; Classics</span><span class="zh-only">人工智能與經典</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const root = document.documentElement;
+  const pageTitles = {
+    zh: '理大人工智能 × 數位人文獎 2026',
+    en: 'PolyU AI × Digital Humanities Awards 2026'
+  };
+  const navItems = [
+    { id: 'about-title', en: 'Objectives', zh: '宗旨' },
+    { id: 'eligibility-title', en: 'Eligibility', zh: '參賽資格' },
+    { id: 'theme-title', en: 'Theme', zh: '主題' },
+    { id: 'formats-title', en: 'Project Requirements', zh: '作品要求' },
+    { id: 'submit-title', en: 'Project Requirements', zh: '作品要求' },
+    { id: 'judging-title', en: 'Judging', zh: '評審' },
+    { id: 'assessment-title', en: 'Judging', zh: '評審' },
+    { id: 'awards-title', en: 'Awards', zh: '獎項' },
+    { id: 'timeline-title', en: 'Important Dates', zh: '重要日期' },
+    { id: 'rules-title', en: 'Academic Integrity', zh: '學術誠信' },
+    { id: 'ip-title', en: 'Intellectual Property', zh: '作品產權' },
+    { id: 'training-title', en: 'Training', zh: '培訓' },
+    { id: 'contact-title', en: 'Enquiries &amp; Registration', zh: '查詢與報名' }
+  ];
+
+  function navLabelHTML(en, zh){
+    return '<span class="en-only">' + en + '</span><span class="zh-only">' + zh + '</span>';
+  }
+
+  function renderNavigation(){
+    const primaryNav = document.getElementById('primaryNav');
+    const drawerNav = document.getElementById('drawerNav');
+    const uniqueNavItems = navItems.filter(function(item, index, items){
+      return index === 0 || item.zh !== items[index - 1].zh;
+    });
+    if(primaryNav){
+      primaryNav.innerHTML = uniqueNavItems.map(function(item){
+        return '<a href="#' + item.id + '">' + navLabelHTML(item.en, item.zh) + '</a>';
+      }).join('');
+    }
+    if(drawerNav){
+      drawerNav.innerHTML = [
+        '<a href="#home"><span>' + navLabelHTML('Home', '主頁') + '</span></a>',
+        '<div class="menu-group">' + navLabelHTML('Competition Rules', '比賽章程') + '</div>',
+        uniqueNavItems.map(function(item){
+          return '<a class="sub" href="#' + item.id + '"><span>' + navLabelHTML(item.en, item.zh) + '</span></a>';
+        }).join('')
+      ].join('');
+    }
+  }
+
+  renderNavigation();
+
+  /* ---------- LANGUAGE ---------- */
+  function setLang(l){
+    l = (l === 'en') ? 'en' : 'zh';
+    root.classList.remove('lang-en','lang-zh');
+    root.classList.add('lang-' + l);
+    root.lang = (l === 'zh') ? 'zh-Hant' : 'en';
+    document.title = pageTitles[l];
+    try { localStorage.setItem('polyu-lang', l); } catch(e){}
+    document.querySelectorAll('a[data-href-en][data-href-zh]').forEach(function(a){
+      a.href = l === 'en' ? a.dataset.hrefEn : a.dataset.hrefZh;
+    });
+    document.querySelectorAll('.ls-btn').forEach(function(b){
+      var on = b.dataset.lang === l;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    requestAnimationFrame(function(){
+      updateHeaderNavMode();
+      if(typeof sizeArtworkInfo === 'function') sizeArtworkInfo();
+    });
+  }
+  document.querySelectorAll('a[data-href-en][data-href-zh]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var url = root.classList.contains('lang-en') ? a.dataset.hrefEn : a.dataset.hrefZh;
+      if(!url) return;
+      e.preventDefault();
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+  });
+
+  const fontScales = [90, 100, 115, 135, 150];
+  let fontIndex = 1;
+  function updateHeaderNavMode(){
+    root.classList.remove('nav-compact');
+    const bar = document.querySelector('header.site .bar');
+    const brand = document.querySelector('.brand');
+    const nav = document.querySelector('nav.top');
+    const right = document.querySelector('.header-right');
+    if(!bar || !brand || !nav || !right || window.innerWidth <= 1180) return;
+    const barBox = bar.getBoundingClientRect();
+    const brandBox = brand.getBoundingClientRect();
+    const rightBox = right.getBoundingClientRect();
+    const navBox = nav.getBoundingClientRect();
+    const available = Math.max(0, rightBox.left - brandBox.right - 32);
+    const clipped = navBox.left < brandBox.right + 16 || navBox.right > rightBox.left - 16;
+    const tooWide = nav.scrollWidth > available;
+    const outsideBar = navBox.left < barBox.left || navBox.right > barBox.right;
+    if(tooWide || clipped || outsideBar) root.classList.add('nav-compact');
+  }
+  function setFontSize(index){
+    index = Number(index);
+    if(!Number.isFinite(index)) index = 1;
+    index = Math.max(0, Math.min(fontScales.length - 1, index));
+    fontIndex = index;
+    root.classList.remove('font-small','font-medium','font-large','font-size-0','font-size-1','font-size-2','font-size-3','font-size-4','font-size-NaN');
+    root.classList.add('font-size-' + index);
+    try { localStorage.setItem('polyu-font-size', String(index)); } catch(e){}
+    const fontValue = document.getElementById('fontValue');
+    const fontDec = document.getElementById('fontDec');
+    const fontInc = document.getElementById('fontInc');
+    if(fontValue) fontValue.textContent = fontScales[index] + '%';
+    if(fontDec) fontDec.disabled = index === 0;
+    if(fontInc) fontInc.disabled = index === fontScales.length - 1;
+    requestAnimationFrame(function(){
+      updateHeaderNavMode();
+      if(typeof sizeArtworkInfo === 'function') sizeArtworkInfo();
+    });
+  }
+
+  document.querySelectorAll('.ls-btn').forEach(function(b){
+    b.addEventListener('click', function(){
+      setLang(b.dataset.lang);
+    });
+  });
+  document.getElementById('fontDec').addEventListener('click', function(){ setFontSize(fontIndex - 1); });
+  document.getElementById('fontInc').addEventListener('click', function(){ setFontSize(fontIndex + 1); });
+  (function(){
+    var l = 'zh';
+    var fs = 1;
+    try { l = localStorage.getItem('polyu-lang') || 'zh'; } catch(e){}
+    try { fs = localStorage.getItem('polyu-font-size') || 1; } catch(e){}
+    setLang(l);
+    setFontSize(fs);
+  })();
+  window.addEventListener('resize', updateHeaderNavMode, {passive:true});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(updateHeaderNavMode);
+  if('ResizeObserver' in window){
+    const navObserver = new ResizeObserver(updateHeaderNavMode);
+    ['header.site .bar','.brand','nav.top','.header-right'].forEach(function(sel){
+      const el = document.querySelector(sel);
+      if(el) navObserver.observe(el);
+    });
+  }
+
+  /* ---------- SETTINGS ---------- */
+  const settingsBtn = document.getElementById('settingsBtn');
+  const settingsPanel = document.getElementById('settingsPanel');
+  function closeSettings(){
+    settingsPanel.classList.remove('open');
+    settingsBtn.setAttribute('aria-expanded','false');
+  }
+  settingsBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = !settingsPanel.classList.contains('open');
+    settingsPanel.classList.toggle('open', open);
+    settingsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  settingsPanel.addEventListener('click', function(e){ e.stopPropagation(); });
+  document.addEventListener('click', closeSettings);
+
+  /* ---------- HEADER STATE ---------- */
+  const header = document.getElementById('siteHeader');
+  function headerState(){ header.classList.toggle('solid', window.scrollY > window.innerHeight * .72); }
+  window.addEventListener('scroll', headerState, {passive:true});
+  headerState();
+
+  /* ---------- SCROLLSPY ---------- */
+  const navLinks = Array.prototype.slice.call(document.querySelectorAll('nav.top a, .drawer nav a'));
+  const spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var id = en.target.id;
+      navLinks.forEach(function(a){
+        var on = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('current', on);
+        if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+      });
+    });
+  }, {rootMargin:'-35% 0px -60% 0px'});
+  Array.from(new Set(navLinks.map(function(a){
+    const href = a.getAttribute('href') || '';
+    return href.charAt(0) === '#' ? href.slice(1) : '';
+  }).filter(Boolean))).forEach(function(id){
+    const target = document.getElementById(id);
+    if(target) spy.observe(target);
+  });
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  const ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+
+  /* ---------- ARTWORK INFO ---------- */
+  function sizeArtworkInfo(){
+    document.querySelectorAll('.art-info').forEach(function(btn){
+      const txt = btn.querySelector('.txt');
+      if(!txt) return;
+      const clone = txt.cloneNode(true);
+      clone.style.position = 'fixed';
+      clone.style.left = '-9999px';
+      clone.style.top = '0';
+      clone.style.maxWidth = 'none';
+      clone.style.opacity = '1';
+      clone.style.whiteSpace = 'nowrap';
+      clone.style.padding = '0 .45rem 0 .7rem';
+      document.body.appendChild(clone);
+      const max = Math.min(window.innerWidth * .72, parseFloat(getComputedStyle(document.documentElement).fontSize) * 22);
+      const width = Math.min(max, Math.ceil(clone.getBoundingClientRect().width + 36));
+      btn.style.setProperty('--info-width', width + 'px');
+      clone.remove();
+    });
+  }
+  sizeArtworkInfo();
+  window.addEventListener('resize', sizeArtworkInfo, {passive:true});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(sizeArtworkInfo);
+  document.querySelectorAll('.art-info').forEach(function(btn){
+    function open(){ btn.classList.add('open'); }
+    function close(){ btn.classList.remove('open'); }
+    btn.addEventListener('mouseenter', open);
+    btn.addEventListener('mouseleave', close);
+    btn.addEventListener('focus', open);
+    btn.addEventListener('blur', close);
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      document.querySelectorAll('.art-info.open').forEach(function(other){
+        if(other !== btn) other.classList.remove('open');
+      });
+      btn.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.art-info.open').forEach(function(btn){ btn.classList.remove('open'); });
+  });
+
+  /* ---------- MOBILE DRAWER ---------- */
+  const menuBtn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('drawer');
+  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+  function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  menuBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    openDrawer();
+  });
+  drawerCloseBtn.addEventListener('click', closeDrawer);
+  document.addEventListener('pointerdown', function(e){
+    if(!drawer.classList.contains('open')) return;
+    if(drawer.contains(e.target) || menuBtn.contains(e.target)) return;
+    closeDrawer();
+  });
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeDrawer); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+    if(e.key === 'Escape' && settingsPanel.classList.contains('open')) closeSettings();
+  });
+</script>
+</body>
+</html>
