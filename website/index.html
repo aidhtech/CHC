@@ -403,8 +403,22 @@
   .lang-zh .contact-band h1{font-weight:500}
   .contact-band p.intro{color:#d8cdae}
   .contact-band .credit{display:none}
-  .contact-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
-  @media (max-width:880px){.contact-cols{grid-template-columns:1fr}}
+  .contact-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(260px,.9fr);grid-template-rows:auto auto auto;gap:0 clamp(2rem,3.5vw,3.8rem);align-items:start}
+  .contact-cols>.cta-copy{display:grid;grid-template-rows:subgrid;grid-row:1/span 3}
+  .contact-cols>.cta-copy h2{grid-row:1}
+  .contact-cols>.cta-copy p{grid-row:2}
+  .contact-cols>.cta-copy .cta-actions{grid-row:3}
+  .contact-cols>.reveal:last-child{grid-row:1/span 3}
+  @media (max-width:1100px){
+    .contact-cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .contact-cols>.reveal:last-child{grid-column:1/-1;grid-row:auto;margin-top:clamp(2rem,5vw,4rem)}
+  }
+  @media (max-width:700px){
+    .contact-cols{grid-template-columns:1fr}
+    .contact-cols>.cta-copy{display:block;grid-row:auto}
+    .contact-cols>.cta-copy+.cta-copy{margin-top:clamp(2rem,8vw,3.5rem)}
+    .contact-cols>.reveal:last-child{grid-column:auto;margin-top:clamp(2rem,8vw,3.5rem)}
+  }
   .contact-cols h2{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:400}
   .contact-cols .cta-copy p{color:var(--ink-soft);margin:1rem 0 0;max-width:46ch}
   .cta-actions{display:flex;flex-direction:column;align-items:flex-start;gap:.9rem;margin-top:1.8rem}
@@ -516,7 +530,7 @@
 </header>
 
 <div class="float-actions">
-  <a class="btn btn-seal nav-cta" href="#contact"><span class="en-only">Register</span><span class="zh-only">報名</span></a>
+  <a class="btn btn-seal nav-cta" href="https://forms.cloud.microsoft/r/gVdvFUTZQT" target="_blank" rel="noopener noreferrer"><span class="en-only">Register</span><span class="zh-only">報名</span></a>
   <a class="btn btn-ink top-cta" href="#home" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
   </a>
@@ -970,7 +984,16 @@
         <div class="cta-actions">
           <a class="btn btn-seal" href="mailto:polyu.ai.dh.awards2026@polyu.edu.hk?subject=PolyU%20AI%20x%20DH%20Awards%202026%20Registration"><span class="en-only">Email the Organising Committee</span><span class="zh-only">電郵主辦單位</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a></span>
+          </a>
+        </div>
+      </div>
+      <div class="cta-copy reveal">
+        <h2><span class="en-only">Submit Entry</span><span class="zh-only">提交作品</span></h2>
+        <div class="cta-actions">
+          <a class="btn btn-seal" href="https://forms.cloud.microsoft/r/XzmXYEMcY5" target="_blank" rel="noopener noreferrer">
+            <span class="en-only">Submit Entry</span><span class="zh-only">提交作品</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
       </div>
       <div class="reveal">
