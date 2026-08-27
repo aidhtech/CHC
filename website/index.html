@@ -541,6 +541,8 @@
   .res-body{margin-top:clamp(.7rem,1.5vw,1.1rem)}
   .res-head{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:end}
   .res-head h3{font-size:clamp(1.5rem,2.6vw,2.1rem);margin:0;font-weight:400}
+  .res-head h3 .cat-no{display:block;font-size:.48em;line-height:1;color:var(--bronze);letter-spacing:.16em;margin-bottom:.45rem}
+  .lang-zh .res-head h3 .cat-no{letter-spacing:.1em}
   .res-head h3 .zh{display:block;font-size:.6em;color:var(--ink-soft);margin-top:.35rem}
   .cat-nav{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
   .cat-nav .btn{padding:.72rem 1.2rem;min-height:44px;font-size:.86rem}
@@ -1056,6 +1058,7 @@
 
   var resourceCategories = [
     {
+      no: { en: 'Category 1', zh: '第一類' },
       en: 'Digital Humanities foundations', zh: '數位人文基礎',
       items: [
         { name: { en: 'Programming Historian', zh: 'Programming Historian' },
@@ -1077,6 +1080,7 @@
       ]
     },
     {
+      no: { en: 'Category 2', zh: '第二類' },
       en: 'Classical texts and databases', zh: '古籍與文本資料庫',
       items: [
         { name: { en: 'Chinese Text Project', zh: '中國哲學書電子化計劃' },
@@ -1094,6 +1098,7 @@
       ]
     },
     {
+      no: { en: 'Category 3', zh: '第三類' },
       en: 'Text-handling tools', zh: '文本處理工具',
       items: [
         { name: { en: 'MARKUS', zh: 'MARKUS 標記工具' },
@@ -1111,6 +1116,7 @@
       ]
     },
     {
+      no: { en: 'Category 4', zh: '第四類' },
       en: 'People and geographical databases', zh: '人物與歷史地理資料庫',
       items: [
         { name: { en: 'China Biographical Database (CBDB)', zh: '中國歷代人物傳記資料庫（CBDB）' },
@@ -1136,6 +1142,7 @@
       ]
     },
     {
+      no: { en: 'Category 5', zh: '第五類' },
       en: 'Digital storytelling and virtual exhibitions', zh: '數位敘事與虛擬展覽',
       items: [
         { name: { en: 'ArcGIS StoryMaps 2025 Competition Winners', zh: 'ArcGIS StoryMaps 2025 競賽得獎作品' },
@@ -1165,7 +1172,8 @@
     }
     function render() {
       var c = resourceCategories[active];
-      catName.innerHTML = '<span class="en-only">' + c.en + '</span>'
+      catName.innerHTML = '<span class="cat-no">' + bi(c.no.en, c.no.zh) + '</span>'
+        + '<span class="en-only">' + c.en + '</span>'
         + '<span class="zh-only">' + c.zh + '</span>'
         + '<span class="zh en-only">' + c.zh + '</span>';
       openAll.innerHTML = bi('Open All &#8599;', '一鍵開啟 &#8599;');
