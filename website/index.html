@@ -541,8 +541,6 @@
   .res-body{margin-top:clamp(.7rem,1.5vw,1.1rem)}
   .res-head{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:end}
   .res-head h3{font-size:clamp(1.5rem,2.6vw,2.1rem);margin:0;font-weight:400}
-  .res-head h3 .cat-no{display:block;font-size:.48em;line-height:1;color:var(--bronze);letter-spacing:.16em;margin-bottom:.45rem}
-  .lang-zh .res-head h3 .cat-no{letter-spacing:.1em}
   .res-head h3 .zh{display:block;font-size:.6em;color:var(--ink-soft);margin-top:.35rem}
   .cat-nav{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
   .cat-nav .btn{padding:.72rem 1.2rem;min-height:44px;font-size:.86rem}
@@ -1029,7 +1027,7 @@
 
     <!-- ---------- EXTERNAL RESOURCES (subpart 02) ---------- -->
     <div class="block-gap" id="external-resources">
-      <span class="label bare reveal accent-red"><span class="en-only">External resources</span><span class="zh-only">外部資源</span></span>
+      <span class="label bare reveal accent-red" id="resSectionLabel"></span>
       <div class="res-body reveal">
         <div class="res-head">
           <h3 id="catName"></h3>
@@ -1160,10 +1158,11 @@
   (function () {
     var list = document.getElementById('resList');
     var catName = document.getElementById('catName');
+    var sectionLabel = document.getElementById('resSectionLabel');
     var openAll = document.getElementById('resOpenAll');
     var prev = document.getElementById('resPrev');
     var next = document.getElementById('resNext');
-    if (!list || !catName) return;
+    if (!list || !catName || !sectionLabel) return;
     var active = 0;
 
     function bi(en, zh) {
@@ -1200,8 +1199,8 @@
     }
     function render() {
       var c = resourceCategories[active];
-      catName.innerHTML = '<span class="cat-no">' + bi(c.no.en, c.no.zh) + '</span>'
-        + '<span class="en-only">' + c.en + '</span>'
+      sectionLabel.innerHTML = bi('External resources · ' + c.no.en, '外部資源・' + c.no.zh);
+      catName.innerHTML = '<span class="en-only">' + c.en + '</span>'
         + '<span class="zh-only">' + c.zh + '</span>'
         + '<span class="zh en-only">' + c.zh + '</span>';
       openAll.innerHTML = bi('Open All in One Tab &#8599;', '在一個分頁開啟全部連結 &#8599;');
