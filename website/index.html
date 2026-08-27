@@ -550,8 +550,8 @@
   .res{display:grid;grid-template-columns:minmax(3rem,4rem) clamp(96px,11vw,150px) 1fr;gap:clamp(1rem,2.5vw,2rem);align-items:start;padding:clamp(1.3rem,3vw,1.9rem) 0;border-bottom:1px solid var(--line)}
   .res .no{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.6rem);color:var(--line);line-height:.9;transition:color .3s}
   .res:hover .no{color:var(--seal)}
-  .res .thumb{aspect-ratio:4/3;border:1px solid var(--line);overflow:hidden;background:var(--paper-2)}
-  .res .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .res .thumb{aspect-ratio:4/3;border:1px solid var(--line);overflow:hidden;background:var(--paper-2);display:grid;place-items:center;padding:clamp(.7rem,2vw,1.2rem)}
+  .res .thumb img{width:100%;height:100%;object-fit:contain;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
   .res:hover .thumb{border-color:var(--ink)}
   .res:hover .thumb img{transform:scale(1.05)}
   .res h4{font-size:clamp(1.1rem,1.7vw,1.35rem);line-height:1.3;font-weight:400}
@@ -1060,18 +1060,22 @@
       items: [
         { name: { en: 'Programming Historian', zh: 'Programming Historian' },
           provider: { en: 'Programming Historian', zh: 'Programming Historian' },
+          img: 'assets/resource-logos/programming-historian.jpeg',
           url: 'https://programminghistorian.org/',
           desc: { en: 'An open, peer-reviewed tutorial library for coding and digital methods in humanities research. Students can follow the browser-based lessons online to learn practical workflows for text, data, and visualisation projects.', zh: '開放取用、經同儕評審的人文數位方法教學庫。學生可在線跟隨教學，學習文本、資料及視覺化項目的實用工作流程。' } },
         { name: { en: 'Taiwanese Association for Digital Humanities (TADH)', zh: '臺灣數位人文學會（TADH）' },
           provider: { en: 'Taiwanese Association for Digital Humanities', zh: '臺灣數位人文學會' },
+          img: 'assets/resource-logos/tadh.jpg',
           url: 'https://tadh.org.tw/en/',
           desc: { en: 'A scholarly association that connects digital-humanities research and teaching in Taiwan. Students can browse its online events, publications, and project information to find methods, examples, and research communities.', zh: '連結臺灣數位人文研究與教學的學術組織。學生可在線瀏覽活動、出版品及項目資訊，尋找研究方法、案例與學術社群。' } },
         { name: { en: 'NTU Research Center for Digital Humanities', zh: '國立臺灣大學數位人文研究中心' },
           provider: { en: 'National Taiwan University Research Center for Digital Humanities', zh: '國立臺灣大學數位人文研究中心' },
+          img: 'assets/resource-logos/ntu-dh.png',
           url: 'https://digital.ntu.edu.tw/Default.html',
           desc: { en: 'A university research centre for digital-humanities projects, publications, databases, and tools. Students can explore its online projects and resources to plan research questions and choose suitable digital methods.', zh: '大學數位人文研究中心，提供研究項目、出版品、資料庫及工具。學生可在線探索相關項目與資源，構思研究問題並選擇合適的數位方法。' } },
         { name: { en: 'DocuSky', zh: 'DocuSky 數位人文學術研究平台' },
           provider: { en: 'National Taiwan University Research Center for Digital Humanities', zh: '國立臺灣大學數位人文研究中心' },
+          img: 'assets/resource-logos/ntu-dh.png',
           url: 'https://docusky.org.tw/',
           desc: { en: 'An online platform for organising, annotating, analysing, and visualising humanities texts, with GIS support. Students can work with a corpus in the browser and turn close reading into searchable, shareable research data.', zh: '整合文本整理、標記、分析及視覺化並支援 GIS 的在線研究平台。學生可在瀏覽器中處理語料庫，將細讀成果轉化為可檢索及分享的研究資料。' } }
       ]
@@ -1082,18 +1086,22 @@
       items: [
         { name: { en: 'Chinese Text Project', zh: '中國哲學書電子化計劃' },
           provider: { en: 'Chinese Text Project (ctext.org)', zh: '中國哲學書電子化計劃（ctext.org）' },
+          img: 'assets/resource-logos/ctext.ico',
           url: 'https://ctext.org/',
           desc: { en: 'An open digital library and searchable corpus of premodern Chinese texts, with linked passages and reference tools. Students can read, search, compare, and cite classical sources online for projects and close reading.', zh: '開放的古代漢籍數位圖書館及可檢索語料庫，提供相關段落連結與參考工具。學生可在線閱讀、檢索、比較及引用經典文獻，支援專題研究與細讀。' } },
         { name: { en: 'Scripta Sinica full-text database', zh: '漢籍全文資料庫' },
           provider: { en: 'Institute of History and Philology, Academia Sinica', zh: '中央研究院歷史語言研究所' },
+          img: 'assets/resource-logos/academia-sinica.png',
           url: 'https://hanchi.ihp.sinica.edu.tw/ihp/hanji.htm',
           desc: { en: 'A full-text database of digitised Chinese historical and classical texts from the Institute of History and Philology. Students can search source passages online for quotations and evidence; access may depend on PolyU Library authentication.', zh: '中央研究院歷史語言研究所建立的中國歷史與經典文獻數位全文資料庫。學生可在線檢索原文、查找引文及研究證據；使用權限可能取決於理大圖書館登入。' } },
         { name: { en: 'Scripta Sinica (project page)', zh: 'Scripta Sinica 計劃頁面' },
           provider: { en: 'Institute of History and Philology, Academia Sinica', zh: '中央研究院歷史語言研究所' },
+          img: 'assets/resource-logos/academia-sinica.png',
           url: 'https://www1.ihp.sinica.edu.tw/en/Research/Groups/scriptaSinica',
           desc: { en: 'The research project behind Scripta Sinica and its digitisation of Chinese historical and humanities texts. Students can read the project information online to understand the collection, identify relevant sources, and frame responsible database research.', zh: '介紹漢籍全文資料庫及中國歷史與人文文獻數位化工作的研究項目。學生可在線了解資料庫範圍，找出相關史料，並建立負責任的資料庫研究方法。' } },
         { name: { en: 'PolyU Chinese Databases', zh: '理大中文資料庫' },
           provider: { en: 'Pao Yue-kong Library, The Hong Kong Polytechnic University', zh: '香港理工大學包玉剛圖書館' },
+          img: 'assets/polyu-logo-transparent.png',
           url: 'https://www.lib.polyu.edu.hk/databases/chinese-databases',
           desc: { en: 'A PolyU Library guide to Chinese-language databases covering classical books, newspapers, journals, theses, and reference works. Students can search the list online to find research sources and check whether off-campus access is available.', zh: '香港理工大學圖書館整理的中文資料庫入口，涵蓋古籍、報刊、期刊、學位論文及參考工具。學生可在線檢索資料庫清單，尋找研究資料並查閱校外使用權限。' } }
       ]
@@ -1104,14 +1112,17 @@
       items: [
         { name: { en: 'MARKUS', zh: 'MARKUS 標記工具' },
           provider: { en: 'Academia Sinica Digital Humanities Research Platform', zh: '中央研究院數位人文研究平台' },
+          img: 'assets/resource-logos/academia-sinica.png',
           url: 'https://dh.ascdc.sinica.edu.tw/member/dhtech/instruction3.html',
           desc: { en: 'A web-based text annotation tool for marking people, places, dates, and other entities in Chinese texts. Students can upload or import text online, build structured annotations, and prepare evidence for later analysis.', zh: '以網頁為基礎的中文文本標記工具，可標記人物、地點、時間及其他實體。學生可在線上傳或匯入文本，建立結構化標記，為後續分析整理研究證據。' } },
         { name: { en: 'Voyant Tools', zh: 'Voyant Tools' },
           provider: { en: 'Voyant Tools', zh: 'Voyant Tools' },
+          img: 'assets/resource-logos/voyant.png',
           url: 'https://voyant-tools.org/',
           desc: { en: 'A browser-based text-analysis suite for searching a corpus, comparing word frequencies, viewing contexts, and creating visualisations. Students can paste or upload texts online to test research questions before building a larger project.', zh: '以瀏覽器運作的文本分析工具套件，可檢索語料庫、比較詞頻、查看語境及製作視覺化圖表。學生可在線貼上或上傳文本，在建立大型項目前測試研究問題。' } },
         { name: { en: 'spaCy — named entity recognition', zh: 'spaCy — 命名實體辨識' },
           provider: { en: 'Explosion', zh: 'Explosion' },
+          img: 'assets/resource-logos/spacy.jpg',
           url: 'https://spacy.io/usage/linguistic-features#named-entities',
           desc: { en: 'An open-source Python library for natural-language processing, including named-entity recognition. Students can read the documentation online and test entity-extraction workflows in a notebook or coding environment for text projects.', zh: '開放原始碼的 Python 自然語言處理程式庫，提供命名實體辨識等功能。學生可在線閱讀文件，並在筆記本或編程環境中測試文本項目的實體抽取流程。' } }
       ]
@@ -1122,22 +1133,27 @@
       items: [
         { name: { en: 'China Biographical Database (CBDB)', zh: '中國歷代人物傳記資料庫（CBDB）' },
           provider: { en: 'CBDB Project: Harvard University, Academia Sinica, and Peking University', zh: 'CBDB 計劃：哈佛大學、中央研究院及北京大學' },
+          img: 'assets/resource-logos/cbdb.png',
           url: 'https://cbdb.hsites.harvard.edu/',
           desc: { en: 'A freely accessible relational database of historical Chinese people, offices, relationships, and networks. Students can search biographies online and use the data to investigate prosopography, social networks, and historical geography.', zh: '免費開放使用的中國歷史人物關係資料庫，收錄人物、官職、人際關係及社會網絡。學生可在線檢索人物資料，研究歷史人物群體、社會網絡及歷史地理。' } },
         { name: { en: 'China Historical GIS (CHGIS)', zh: '中國歷史地理資訊系統（CHGIS）' },
           provider: { en: 'Harvard Center for Geographic Analysis', zh: '哈佛大學地理分析中心' },
+          img: 'assets/resource-logos/chgis.png',
           url: 'https://gis.harvard.edu/china-historical-gis',
           desc: { en: 'A free historical-GIS project with datasets on Chinese administrative geography from 221 BCE to 1911 CE. Students can explore the project online, download spatial data, and map how places and boundaries changed over time.', zh: '免費的中國歷史地理資訊項目，提供公元前221年至公元1911年的行政地理資料集。學生可在線了解項目、下載空間資料，並製圖研究地點與疆界的歷時變化。' } },
         { name: { en: 'Chinese historical place-name search', zh: '中國歷史地名查詢系統' },
           provider: { en: 'Institute of History and Philology, Academia Sinica', zh: '中央研究院歷史語言研究所' },
+          img: 'assets/resource-logos/academia-sinica.png',
           url: 'https://newarchive.ihp.sinica.edu.tw/hplname/placename/basic/',
           desc: { en: 'An online search system for historical Chinese place names and their changes over time. Students can check variant names and historical references online before mapping places or interpreting sources.', zh: '查詢中國歷史地名及其沿革的在線檢索系統。學生可在線核對異名及歷史資料，然後進行地圖製作或解讀史料。' } },
         { name: { en: 'Name authority and biographical database', zh: '人名權威－人物傳記資料庫' },
           provider: { en: 'Institute of History and Philology, Academia Sinica', zh: '中央研究院歷史語言研究所' },
+          img: 'assets/resource-logos/academia-sinica.png',
           url: 'https://newarchive.ihp.sinica.edu.tw/sncaccgi/sncacFtp?ACTION=TQ%2CsncacFtpqf%2CSN%3D001665%2C2nd%2Csearch_simple',
           desc: { en: 'An authority and biography database that links historical names with biographical information, offices, sources, and relationships. Students can search it online to distinguish people with similar names and strengthen source-based research.', zh: '連結歷史人物姓名、傳記、官職、史料出處及關係的權威資料庫。學生可在線檢索，分辨同名人物，並加強以史料為本的研究。' } },
         { name: { en: 'China Government Employee Database (CGED)', zh: '中國歷史官員量化資料庫（CGED）' },
           provider: { en: 'Lee-Campbell Group', zh: 'Lee-Campbell Group' },
+          img: 'assets/resource-logos/cged-wordmark.svg',
           url: 'https://searchjsl.leecampbellgroup.blog/',
           desc: { en: 'A searchable quantitative database for studying historical Chinese officials and their careers. Students can examine the online records to compare offices, people, and periods, then develop evidence-based historical questions.', zh: '可檢索的中國歷史官員及仕途量化資料庫。學生可在線比較官職、人物及時期，進一步提出以證據為本的歷史研究問題。' } }
       ]
@@ -1148,10 +1164,12 @@
       items: [
         { name: { en: 'ArcGIS StoryMaps 2025 Competition Winners', zh: 'ArcGIS StoryMaps 2025 競賽得獎作品' },
           provider: { en: 'Esri', zh: 'Esri' },
+          img: 'assets/resource-logos/storymaps.jpeg',
           url: 'https://www.esri.com/en-us/arcgis/products/arcgis-storymaps/contest/gallery/2025-winners',
           desc: { en: 'An online gallery of winning ArcGIS StoryMaps, including student work from around the world. Students can study these examples online to learn how to combine maps, sources, images, and narrative structure in a digital exhibition.', zh: '展示全球 ArcGIS StoryMaps 得獎作品的在線案例庫，包括學生作品。學生可在線研究案例，學習如何在數位展覽中結合地圖、史料、圖像及敘事結構。' } },
         { name: { en: 'Festiverse: Cheung Chau Jiao Festival VR 360', zh: 'Festiverse：長洲太平清醮 VR 360' },
           provider: { en: 'Hong Kong Shue Yan University VR Lab', zh: '香港樹仁大學 VR Lab' },
+          img: 'assets/resource-logos/hksyu.ico',
           url: 'https://vrlab.hksyu.edu/festiverse-cheung-chau-jiao-mr/',
           desc: { en: 'A Hong Kong virtual-reality project documenting the Cheung Chau Jiao Festival as a cultural-heritage experience. Students can explore the project online to see how 360-degree media can support spatial storytelling, interpretation, and public engagement.', zh: '以虛擬實境記錄長洲太平清醮文化遺產體驗的香港項目。學生可在線探索案例，了解 360 度媒體如何支援空間敘事、文化解讀及公眾參與。' } }
       ]
@@ -1170,6 +1188,9 @@
     function bi(en, zh) {
       return '<span class="en-only">' + en + '</span><span class="zh-only">' + zh + '</span>';
     }
+    function resourceEsc(value) {
+      return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
     function render() {
       var c = resourceCategories[active];
       sectionLabel.innerHTML = bi('External resources · ' + c.no.en, '外部資源・' + c.no.zh);
@@ -1179,7 +1200,7 @@
       list.innerHTML = c.items.map(function (r, n) {
         var num = ('0' + (n + 1)).slice(-2);
         return '<li class="res"><div class="no">' + num + '</div>'
-          + '<div class="thumb"><img src="' + (r.img || resourcePlaceholder) + '" alt="" loading="lazy" /></div>'
+          + '<div class="thumb"><img src="' + (r.img || resourcePlaceholder) + '" alt="' + resourceEsc(r.name.en) + ' logo" loading="lazy" /></div>'
           + '<div class="txt">'
           + '<h4 data-no="' + num + '"><a href="' + r.url + '" target="_blank" rel="noopener noreferrer">'
           + bi(r.name.en, r.name.zh) + '<span class="go">&#8599;</span></a></h4>'

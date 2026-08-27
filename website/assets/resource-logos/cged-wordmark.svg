@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">CGED</title>
+  <desc id="desc">China Government Employee Database wordmark for the Lee-Campbell Group.</desc>
+  <rect width="640" height="360" rx="8" fill="#f2ead8"/>
+  <path d="M56 78h528M56 282h528" stroke="#c6b58e" stroke-width="2"/>
+  <text x="56" y="202" fill="#9c2b2b" font-family="Georgia,serif" font-size="112" letter-spacing="12">CGED</text>
+  <text x="60" y="244" fill="#5d5548" font-family="Arial,sans-serif" font-size="21" letter-spacing="4">LEE-CAMPBELL GROUP</text>
+</svg>
