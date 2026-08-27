@@ -537,7 +537,8 @@
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
   /* ---------- EXTERNAL RESOURCES (Training & Support, subpart 02) ---------- */
-  .res-body{margin-top:clamp(1.4rem,3vw,2.2rem)}
+  #external-resources{border-top:1px solid var(--ink);padding-top:clamp(1rem,2.2vw,1.6rem)}
+  .res-body{margin-top:clamp(.7rem,1.5vw,1.1rem)}
   .res-head{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:end}
   .res-head h3{font-size:clamp(1.5rem,2.6vw,2.1rem);margin:0;font-weight:400}
   .res-head h3 .zh{display:block;font-size:.6em;color:var(--ink-soft);margin-top:.35rem}
@@ -547,7 +548,6 @@
   .cat-arrow:hover{background:var(--seal);color:#f8f2e4;border-color:var(--seal)}
   .res-list{list-style:none;margin:clamp(1.4rem,3vw,2rem) 0 0;padding:0}
   .res{display:grid;grid-template-columns:minmax(3rem,4rem) clamp(96px,11vw,150px) 1fr;gap:clamp(1rem,2.5vw,2rem);align-items:start;padding:clamp(1.3rem,3vw,1.9rem) 0;border-bottom:1px solid var(--line)}
-  .res:last-child{border-bottom:1px solid var(--ink)}
   .res .no{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.6rem);color:var(--line);line-height:.9;transition:color .3s}
   .res:hover .no{color:var(--seal)}
   .res .thumb{aspect-ratio:4/3;border:1px solid var(--line);overflow:hidden;background:var(--paper-2)}
@@ -561,9 +561,6 @@
   .res .provider{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);font-weight:500;margin-top:.55rem}
   .lang-zh .res .provider{letter-spacing:.14em}
   .res p{margin:.55rem 0 0;color:var(--ink-soft);font-size:.96rem;max-width:70ch}
-  .res-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding:1.3rem 0 0}
-  .res-note{font-size:.78rem;color:var(--ink-soft);margin:0;max-width:52ch}
-  .res-note.warn{color:var(--seal)}
   @media (max-width:820px){
     .res{grid-template-columns:2.6rem clamp(80px,20vw,120px) 1fr;gap:.9rem 1.1rem}
     .res .no{font-size:1.6rem}
@@ -1041,9 +1038,6 @@
           </div>
         </div>
         <ol class="res-list" id="resList"></ol>
-        <div class="res-foot">
-          <p class="res-note" id="resNote"></p>
-        </div>
       </div>
     </div>
   </div>
@@ -1169,19 +1163,16 @@
     function bi(en, zh) {
       return '<span class="en-only">' + en + '</span><span class="zh-only">' + zh + '</span>';
     }
-    function defaultNote() {
-      return bi('Each resource opens in its own new tab — allow pop-ups for this site if your browser asks.',
-                '每項資源會於新分頁開啟；若瀏覽器提示，請允許本網站開啟彈出視窗。');
-    }
-
     function render() {
       var c = resourceCategories[active];
       catName.innerHTML = '<span class="en-only">' + c.en + '</span>'
         + '<span class="zh-only">' + c.zh + '</span>'
         + '<span class="zh en-only">' + c.zh + '</span>';
       openAll.innerHTML = bi('Open All &#8599;', '一鍵開啟 &#8599;');
-      note.innerHTML = defaultNote();
-      note.classList.remove('warn');
+      if (note) {
+        note.innerHTML = '';
+        note.classList.remove('warn');
+      }
       list.innerHTML = c.items.map(function (r, n) {
         var num = ('0' + (n + 1)).slice(-2);
         return '<li class="res"><div class="no">' + num + '</div>'
@@ -1207,11 +1198,11 @@
       resourceCategories[active].items.forEach(function (r) {
         if (!window.open(r.url, '_blank', 'noopener')) blocked++;
       });
-      if (blocked) {
+      if (blocked && note) {
         note.innerHTML = bi('Your browser blocked ' + blocked + ' tab(s). Allow pop-ups for this site, then try again.',
                             '瀏覽器阻擋了 ' + blocked + ' 個分頁，請允許本網站的彈出視窗後再試。');
         note.classList.add('warn');
-      } else {
+      } else if (note) {
         note.innerHTML = bi('Opened ' + resourceCategories[active].items.length + ' tabs.',
                             '已開啟 ' + resourceCategories[active].items.length + ' 個分頁。');
         note.classList.remove('warn');
