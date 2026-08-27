@@ -535,6 +535,48 @@
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- EXTERNAL RESOURCES (Training & Support, subpart 02) ---------- */
+  .res-body{margin-top:clamp(1.4rem,3vw,2.2rem)}
+  .res-head{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:end}
+  .res-head h3{font-size:clamp(1.5rem,2.6vw,2.1rem);margin:0;font-weight:400}
+  .res-head h3 .zh{display:block;font-size:.6em;color:var(--ink-soft);margin-top:.35rem}
+  .cat-nav{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem}
+  .cat-nav .btn{padding:.72rem 1.2rem;min-height:44px;font-size:.86rem}
+  .cat-arrow{display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;flex:0 0 auto;border-radius:50%;border:1px solid var(--ink);background:rgba(245,240,227,.94);color:var(--ink);font-size:1.15rem;line-height:1;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+  .cat-arrow:hover{background:var(--seal);color:#f8f2e4;border-color:var(--seal)}
+  .res-list{list-style:none;margin:clamp(1.4rem,3vw,2rem) 0 0;padding:0}
+  .res{display:grid;grid-template-columns:minmax(3rem,4rem) clamp(96px,11vw,150px) 1fr;gap:clamp(1rem,2.5vw,2rem);align-items:start;padding:clamp(1.3rem,3vw,1.9rem) 0;border-bottom:1px solid var(--line)}
+  .res:last-child{border-bottom:1px solid var(--ink)}
+  .res .no{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(1.9rem,3.4vw,2.6rem);color:var(--line);line-height:.9;transition:color .3s}
+  .res:hover .no{color:var(--seal)}
+  .res .thumb{aspect-ratio:4/3;border:1px solid var(--line);overflow:hidden;background:var(--paper-2)}
+  .res .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .res:hover .thumb{border-color:var(--ink)}
+  .res:hover .thumb img{transform:scale(1.05)}
+  .res h4{font-size:clamp(1.1rem,1.7vw,1.35rem);line-height:1.3;font-weight:400}
+  .res h4 a{text-decoration:none;background-image:linear-gradient(var(--line),var(--line));background-repeat:no-repeat;background-position:0 100%;background-size:100% 1px;padding-bottom:.14em;transition:background-size .25s,background-image .25s,color .25s}
+  .res h4 a:hover{color:var(--seal);background-image:linear-gradient(var(--seal),var(--seal))}
+  .res h4 .go{font-size:.72em;color:var(--bronze);margin-left:.4rem}
+  .res .provider{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);font-weight:500;margin-top:.55rem}
+  .lang-zh .res .provider{letter-spacing:.14em}
+  .res p{margin:.55rem 0 0;color:var(--ink-soft);font-size:.96rem;max-width:70ch}
+  .res-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding:1.3rem 0 0}
+  .res-note{font-size:.78rem;color:var(--ink-soft);margin:0;max-width:52ch}
+  .res-note.warn{color:var(--seal)}
+  @media (max-width:820px){
+    .res{grid-template-columns:2.6rem clamp(80px,20vw,120px) 1fr;gap:.9rem 1.1rem}
+    .res .no{font-size:1.6rem}
+  }
+  @media (max-width:560px){
+    .res-head{grid-template-columns:1fr}
+    .cat-nav{width:100%}
+    .cat-nav .btn{flex:1 1 auto}
+    .res{grid-template-columns:clamp(78px,24vw,104px) 1fr;gap:.9rem 1rem}
+    .res .no{display:none}
+    .res .txt h4{margin-top:-.15em}
+    .res .txt h4::before{content:attr(data-no) " ";font-family:"Fraunces",serif;font-style:italic;font-weight:300;color:var(--line)}
+  }
 </style>
 </head>
 <body>
@@ -985,8 +1027,200 @@
       </div>
       <div class="stage-dots" id="examplesDots" hidden></div>
     </div>
+
+    <!-- ---------- EXTERNAL RESOURCES (subpart 02) ---------- -->
+    <div class="block-gap" id="external-resources">
+      <span class="label bare reveal accent-red"><span class="en-only">External resources</span><span class="zh-only">外部資源</span></span>
+      <div class="res-body reveal">
+        <div class="res-head">
+          <h3 id="catName"></h3>
+          <div class="cat-nav">
+            <button class="btn btn-line" id="resOpenAll" type="button"></button>
+            <button class="cat-arrow" id="resPrev" type="button" aria-label="Previous category">&lsaquo;</button>
+            <button class="cat-arrow" id="resNext" type="button" aria-label="Next category">&rsaquo;</button>
+          </div>
+        </div>
+        <ol class="res-list" id="resList"></ol>
+        <div class="res-foot">
+          <p class="res-note" id="resNote"></p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+<script>
+  /* ---------- EXTERNAL RESOURCES ----------
+     Add a resource by appending to the `items` array of a category below.
+     img: optional path under assets/ — omit it and the paper placeholder is used.
+     Text is bilingual: every field has an `en` and a `zh` form. */
+  var resourcePlaceholder = "data:image/svg+xml;utf8," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">'
+    + '<rect width="400" height="300" fill="#ede6d2"/>'
+    + '<g stroke="#d9cead" stroke-width="1"><path d="M0 75h400M0 150h400M0 225h400M100 0v300M200 0v300M300 0v300"/></g>'
+    + '<circle cx="200" cy="150" r="46" fill="none" stroke="#9c2b2b" stroke-width="1.5"/>'
+    + '<text x="200" y="158" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="30" fill="#8a6a2f">img</text></svg>');
+
+  var resourceCategories = [
+    {
+      en: 'Digital Humanities foundations', zh: '數位人文基礎',
+      items: [
+        { name: { en: 'Programming Historian', zh: 'Programming Historian' },
+          provider: { en: 'The Programming Historian', zh: 'The Programming Historian' },
+          url: 'https://programminghistorian.org/',
+          desc: { en: 'Beginner-friendly, peer-reviewed tutorials on digital methods for humanities research.', zh: '適合初學者的同儕評審教學，介紹人文研究常用的數位方法。' } },
+        { name: { en: 'Taiwanese Association for Digital Humanities (TADH)', zh: '臺灣數位人文學會（TADH）' },
+          provider: { en: 'TADH', zh: '臺灣數位人文學會' },
+          url: 'https://tadh.org.tw/en/',
+          desc: { en: 'Taiwan-based digital humanities association — events, workshops and academic resources.', zh: '臺灣數位人文學會，提供活動、工作坊及學術資源。' } },
+        { name: { en: 'NTU Research Center for Digital Humanities', zh: '國立臺灣大學數位人文研究中心' },
+          provider: { en: 'National Taiwan University', zh: '國立臺灣大學' },
+          url: 'https://digital.ntu.edu.tw/Default.html',
+          desc: { en: 'Digital humanities research, activities, publications, databases and tools.', zh: '數位人文研究、活動、出版品、資料庫及工具。' } },
+        { name: { en: 'DocuSky', zh: 'DocuSky 數位人文學術研究平台' },
+          provider: { en: 'NTU DHRC', zh: '臺大數位人文研究中心' },
+          url: 'https://docusky.org.tw/',
+          desc: { en: 'Text organization, annotation, analysis, visualization and GIS integration on one platform.', zh: '整合文本整理、標記、分析、視覺化與 GIS 的研究平台。' } }
+      ]
+    },
+    {
+      en: 'Classical texts and databases', zh: '古籍與文本資料庫',
+      items: [
+        { name: { en: 'Chinese Text Project', zh: '中國哲學書電子化計劃' },
+          provider: { en: 'ctext.org', zh: 'ctext.org' },
+          url: 'https://ctext.org/',
+          desc: { en: 'Searchable premodern Chinese texts with parallel passages and dictionary lookup.', zh: '可檢索的古代漢籍全文，附平行段落比對與字典查詢。' } },
+        { name: { en: 'Scripta Sinica full-text database', zh: '漢籍全文資料庫' },
+          provider: { en: 'Academia Sinica', zh: '中央研究院' },
+          url: 'https://hanchi.ihp.sinica.edu.tw/ihp/hanji.htm',
+          desc: { en: 'Full-text database of Chinese historical and classical texts.', zh: '中國歷史與經典文獻全文資料庫。' } },
+        { name: { en: 'Scripta Sinica (project page)', zh: 'Scripta Sinica 計劃頁面' },
+          provider: { en: 'Academia Sinica, Institute of History and Philology', zh: '中央研究院歷史語言研究所' },
+          url: 'https://www1.ihp.sinica.edu.tw/en/Research/Groups/scriptaSinica',
+          desc: { en: 'Digitized Chinese historical and humanities texts.', zh: '中國歷史與人文文獻的數位化成果。' } }
+      ]
+    },
+    {
+      en: 'Text-handling tools', zh: '文本處理工具',
+      items: [
+        { name: { en: 'MARKUS', zh: 'MARKUS 標記工具' },
+          provider: { en: 'Academia Sinica DH', zh: '中央研究院數位人文' },
+          url: 'https://dh.ascdc.sinica.edu.tw/member/dhtech/instruction3.html',
+          desc: { en: 'Annotate people, places, dates and other entities in Chinese texts.', zh: '為中文文本標記人物、地點、時間及其他實體。' } },
+        { name: { en: 'Voyant Tools', zh: 'Voyant Tools' },
+          provider: { en: 'Sinclair &amp; Rockwell', zh: 'Sinclair &amp; Rockwell' },
+          url: 'https://voyant-tools.org/',
+          desc: { en: 'Text searching, word frequencies, concordances and visualization in the browser.', zh: '在瀏覽器中進行文本檢索、詞頻統計、關鍵詞脈絡與視覺化。' } },
+        { name: { en: 'spaCy — named entity recognition', zh: 'spaCy — 命名實體辨識' },
+          provider: { en: 'Explosion AI', zh: 'Explosion AI' },
+          url: 'https://spacy.io/usage/linguistic-features#named-entities',
+          desc: { en: 'Named-entity recognition and linguistic processing for programmatic pipelines.', zh: '可程式化的命名實體辨識與語言處理工具。' } }
+      ]
+    },
+    {
+      en: 'People and geographical databases', zh: '人物與歷史地理資料庫',
+      items: [
+        { name: { en: 'China Biographical Database (CBDB)', zh: '中國歷代人物傳記資料庫（CBDB）' },
+          provider: { en: 'Harvard University', zh: '哈佛大學' },
+          url: 'https://cbdb.hsites.harvard.edu/',
+          desc: { en: 'Historical people, offices, relationships and social networks.', zh: '歷史人物、官職、人際關係與社會網絡資料。' } },
+        { name: { en: 'China Historical GIS (CHGIS)', zh: '中國歷史地理資訊系統（CHGIS）' },
+          provider: { en: 'Harvard Center for Geographic Analysis', zh: '哈佛大學地理分析中心' },
+          url: 'https://gis.harvard.edu/china-historical-gis',
+          desc: { en: 'Historical administrative geography and spatial datasets.', zh: '歷史行政地理與空間資料集。' } },
+        { name: { en: 'Chinese historical place-name search', zh: '中國歷史地名查詢系統' },
+          provider: { en: 'Academia Sinica, IHP', zh: '中央研究院歷史語言研究所' },
+          url: 'https://newarchive.ihp.sinica.edu.tw/hplname/placename/basic/',
+          desc: { en: 'Search historical Chinese place names and their changes over time.', zh: '查詢中國歷史地名及其沿革。' } },
+        { name: { en: 'Name authority and biographical database', zh: '人名權威－人物傳記資料庫' },
+          provider: { en: 'Academia Sinica, IHP', zh: '中央研究院歷史語言研究所' },
+          url: 'https://newarchive.ihp.sinica.edu.tw/sncaccgi/sncacFtp?ACTION=TQ%2CsncacFtpqf%2CSN%3D001665%2C2nd%2Csearch_simple',
+          desc: { en: 'Historical biographies, names, offices, sources and relationships.', zh: '歷史人物傳記、姓名、官職、史料出處及關係。' } },
+        { name: { en: 'China Government Employee Database (CGED)', zh: '中國歷史官員量化資料庫（CGED）' },
+          provider: { en: 'Lee-Campbell Group', zh: 'Lee-Campbell Group' },
+          url: 'https://searchjsl.leecampbellgroup.blog/',
+          desc: { en: 'Quantitative data for research on historical Chinese officials.', zh: '中國歷史官員的量化研究資料。' } }
+      ]
+    },
+    {
+      en: 'Digital storytelling and virtual exhibitions', zh: '數位敘事與虛擬展覽',
+      items: [
+        { name: { en: 'ArcGIS StoryMaps 2025 Competition Winners', zh: 'ArcGIS StoryMaps 2025 競賽得獎作品' },
+          provider: { en: 'Esri', zh: 'Esri' },
+          url: 'https://www.esri.com/en-us/arcgis/products/arcgis-storymaps/contest/gallery/2025-winners',
+          desc: { en: 'Winning interactive geographic stories, including a dedicated student track — entries from 55 countries in 14 languages.', zh: '互動地理敘事得獎作品，設有學生組，參賽者來自 55 個國家、14 種語言。' } },
+        { name: { en: 'Festiverse: Cheung Chau Jiao Festival VR 360', zh: 'Festiverse：長洲太平清醮 VR 360' },
+          provider: { en: 'HKSYU VR Lab', zh: '香港樹仁大學 VR Lab' },
+          url: 'https://vrlab.hksyu.edu/festiverse-cheung-chau-jiao-mr/',
+          desc: { en: 'A Hong Kong example of a virtual cultural-heritage experience.', zh: '香港文化遺產的虛擬體驗範例。' } }
+      ]
+    }
+  ];
+
+  (function () {
+    var list = document.getElementById('resList');
+    var catName = document.getElementById('catName');
+    var openAll = document.getElementById('resOpenAll');
+    var note = document.getElementById('resNote');
+    var prev = document.getElementById('resPrev');
+    var next = document.getElementById('resNext');
+    if (!list || !catName) return;
+    var active = 0;
+
+    function bi(en, zh) {
+      return '<span class="en-only">' + en + '</span><span class="zh-only">' + zh + '</span>';
+    }
+    function defaultNote() {
+      return bi('Each resource opens in its own new tab — allow pop-ups for this site if your browser asks.',
+                '每項資源會於新分頁開啟；若瀏覽器提示，請允許本網站開啟彈出視窗。');
+    }
+
+    function render() {
+      var c = resourceCategories[active];
+      catName.innerHTML = '<span class="en-only">' + c.en + '</span>'
+        + '<span class="zh-only">' + c.zh + '</span>'
+        + '<span class="zh en-only">' + c.zh + '</span>';
+      openAll.innerHTML = bi('Open All &#8599;', '一鍵開啟 &#8599;');
+      note.innerHTML = defaultNote();
+      note.classList.remove('warn');
+      list.innerHTML = c.items.map(function (r, n) {
+        var num = ('0' + (n + 1)).slice(-2);
+        return '<li class="res"><div class="no">' + num + '</div>'
+          + '<div class="thumb"><img src="' + (r.img || resourcePlaceholder) + '" alt="" loading="lazy" /></div>'
+          + '<div class="txt">'
+          + '<h4 data-no="' + num + '"><a href="' + r.url + '" target="_blank" rel="noopener noreferrer">'
+          + bi(r.name.en, r.name.zh) + '<span class="go">&#8599;</span></a></h4>'
+          + '<div class="provider">' + bi(r.provider.en, r.provider.zh) + '</div>'
+          + '<p>' + bi(r.desc.en, r.desc.zh) + '</p>'
+          + '</div></li>';
+      }).join('');
+    }
+
+    function go(i) {
+      active = (i + resourceCategories.length) % resourceCategories.length;
+      render();
+    }
+
+    prev.addEventListener('click', function () { go(active - 1); });
+    next.addEventListener('click', function () { go(active + 1); });
+    openAll.addEventListener('click', function () {
+      var blocked = 0;
+      resourceCategories[active].items.forEach(function (r) {
+        if (!window.open(r.url, '_blank', 'noopener')) blocked++;
+      });
+      if (blocked) {
+        note.innerHTML = bi('Your browser blocked ' + blocked + ' tab(s). Allow pop-ups for this site, then try again.',
+                            '瀏覽器阻擋了 ' + blocked + ' 個分頁，請允許本網站的彈出視窗後再試。');
+        note.classList.add('warn');
+      } else {
+        note.innerHTML = bi('Opened ' + resourceCategories[active].items.length + ' tabs.',
+                            '已開啟 ' + resourceCategories[active].items.length + ' 個分頁。');
+        note.classList.remove('warn');
+      }
+    });
+
+    render();
+  })();
+</script>
 <script>
   /* ---------- EXAMPLE PROJECTS GALLERY ----------
      Add a new project by appending an object to this array — the grid,
