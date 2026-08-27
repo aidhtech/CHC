@@ -1161,7 +1161,6 @@
     var list = document.getElementById('resList');
     var catName = document.getElementById('catName');
     var openAll = document.getElementById('resOpenAll');
-    var note = document.getElementById('resNote');
     var prev = document.getElementById('resPrev');
     var next = document.getElementById('resNext');
     if (!list || !catName) return;
@@ -1170,17 +1169,42 @@
     function bi(en, zh) {
       return '<span class="en-only">' + en + '</span><span class="zh-only">' + zh + '</span>';
     }
+    function hubEscape(value) {
+      return String(value).replace(/[&<>"']/g, function (ch) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+      });
+    }
+    function hubText(value) {
+      return hubEscape(String(value).replace(/&amp;/g, '&'));
+    }
+    function openResourceHub(category) {
+      var hub = window.open('', '_blank');
+      if (!hub) return;
+      var zh = document.documentElement.classList.contains('lang-zh');
+      var title = zh ? category.no.zh + '：' + category.zh : category.no.en + ': ' + category.en;
+      var intro = zh
+        ? '請選擇下方連結開啟資源。'
+        : 'Select a link below to open the resource.';
+      var links = category.items.map(function (r, n) {
+        return '<li><a href="' + hubEscape(r.url) + '" target="_blank" rel="noopener noreferrer">'
+          + '<strong>' + hubText(r.name[zh ? 'zh' : 'en']) + '</strong>'
+          + '<span>' + hubText(r.provider[zh ? 'zh' : 'en']) + '</span></a></li>';
+      }).join('');
+      hub.document.open();
+      hub.document.write('<!doctype html><html lang="' + (zh ? 'zh-Hant' : 'en') + '"><head><meta charset="utf-8">'
+        + '<meta name="viewport" content="width=device-width,initial-scale=1"><title>' + hubEscape(title) + '</title>'
+        + '<style>body{margin:0;padding:clamp(2rem,6vw,5rem);background:#f5f0e3;color:#211d17;font:16px/1.6 system-ui,sans-serif}main{max-width:52rem;margin:auto}h1{font:400 clamp(2rem,5vw,3.5rem)/1.1 Georgia,serif;margin:0 0 .75rem}p{color:#6e675a;margin:0 0 2rem}ol{padding:0;list-style:none;border-top:1px solid #b9ad93}li{border-bottom:1px solid #b9ad93}a{display:flex;flex-direction:column;gap:.2rem;padding:1rem 0;color:#9c2b2b;text-decoration:none}a:hover strong{text-decoration:underline}strong{font-size:1.1rem;font-weight:500}span{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#8a6a2f}</style></head><body><main><h1>'
+        + hubEscape(title) + '</h1><p>' + hubEscape(intro) + '</p><ol>' + links + '</ol></main></body></html>');
+      hub.document.close();
+      try { hub.opener = null; } catch (e) {}
+    }
     function render() {
       var c = resourceCategories[active];
       catName.innerHTML = '<span class="cat-no">' + bi(c.no.en, c.no.zh) + '</span>'
         + '<span class="en-only">' + c.en + '</span>'
         + '<span class="zh-only">' + c.zh + '</span>'
         + '<span class="zh en-only">' + c.zh + '</span>';
-      openAll.innerHTML = bi('Open All &#8599;', '一鍵開啟 &#8599;');
-      if (note) {
-        note.innerHTML = '';
-        note.classList.remove('warn');
-      }
+      openAll.innerHTML = bi('Open All in One Tab &#8599;', '在一個分頁開啟全部連結 &#8599;');
       list.innerHTML = c.items.map(function (r, n) {
         var num = ('0' + (n + 1)).slice(-2);
         return '<li class="res"><div class="no">' + num + '</div>'
@@ -1202,19 +1226,7 @@
     prev.addEventListener('click', function () { go(active - 1); });
     next.addEventListener('click', function () { go(active + 1); });
     openAll.addEventListener('click', function () {
-      var blocked = 0;
-      resourceCategories[active].items.forEach(function (r) {
-        if (!window.open(r.url, '_blank', 'noopener')) blocked++;
-      });
-      if (blocked && note) {
-        note.innerHTML = bi('Your browser blocked ' + blocked + ' tab(s). Allow pop-ups for this site, then try again.',
-                            '瀏覽器阻擋了 ' + blocked + ' 個分頁，請允許本網站的彈出視窗後再試。');
-        note.classList.add('warn');
-      } else if (note) {
-        note.innerHTML = bi('Opened ' + resourceCategories[active].items.length + ' tabs.',
-                            '已開啟 ' + resourceCategories[active].items.length + ' 個分頁。');
-        note.classList.remove('warn');
-      }
+      openResourceHub(resourceCategories[active]);
     });
 
     render();
