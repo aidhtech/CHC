@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">spaCy</title>
+  <desc id="desc">spaCy wordmark</desc>
+  <g fill="none" stroke="#08a6ce" stroke-width="12" stroke-linecap="round">
+    <circle cx="144" cy="160" r="76"/>
+    <path d="M144 84v152M68 160h152M91 107l106 106M197 107 91 213"/>
+  </g>
+  <text x="278" y="205" fill="#087ea4" font-family="Arial, Helvetica, sans-serif" font-size="128" font-weight="700" letter-spacing="-7">spaCy</text>
+</svg>

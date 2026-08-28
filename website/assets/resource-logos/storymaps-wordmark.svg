@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">ArcGIS StoryMaps</title>
+  <desc id="desc">ArcGIS StoryMaps wordmark</desc>
+  <path fill="#12b9aa" d="M76 68 148 36l72 32v112l-72 42-72-42z"/>
+  <path fill="#fff" d="M103 101h18v61h18v-44h18v44h18v-61h18v78h-18v-43h-18v43h-18v-43h-18v43h-18z"/>
+  <circle cx="183" cy="87" r="8" fill="#fff"/>
+  <text x="282" y="146" fill="#143c3d" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="600">ArcGIS</text>
+  <text x="282" y="211" fill="#143c3d" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="400">StoryMaps</text>
+</svg>

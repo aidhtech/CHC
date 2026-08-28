@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">Chinese Text Project</title>
+  <desc id="desc">Chinese Text Project ctext.org wordmark</desc>
+  <g fill="none" stroke="#9c2b2b" stroke-width="7">
+    <path d="M52 64h856"/>
+    <path d="M52 256h856"/>
+  </g>
+  <text x="480" y="156" text-anchor="middle" fill="#25221d" font-family="Georgia, 'Times New Roman', serif" font-size="82" letter-spacing="3">ctext.org</text>
+  <text x="480" y="214" text-anchor="middle" fill="#806f52" font-family="-apple-system, BlinkMacSystemFont, 'Noto Sans CJK TC', sans-serif" font-size="30" letter-spacing="5">中國哲學書電子化計劃</text>
+</svg>
